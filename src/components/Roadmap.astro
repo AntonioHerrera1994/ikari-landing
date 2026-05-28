@@ -1,0 +1,92 @@
+---
+import '../styles/roadmap.css'
+interface Props {
+  phoneImageSrc?: string;
+  phoneImageAlt?: string;
+}
+
+const {
+  phoneImageSrc = "/images/phone-mockup.png",
+  phoneImageAlt = "Vista previa WhatsApp en móvil",
+} = Astro.props;
+---
+
+<section class="roadmap-section">
+  <!-- COLUMNA IZQUIERDA -->
+  <div class="roadmap-left">
+
+    <!-- Header con borde izquierdo -->
+    <div class="roadmap-header">
+      <div class="tag-label">
+        <span class="tag-icon">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
+          </svg>
+        </span>
+        Integraciones de API
+      </div>
+      <h2 class="roadmap-title">Roadmap y Próximas Implementaciones</h2>
+      <p class="roadmap-description">
+        Para consolidar a Ikari como el líder absoluto en el mercado del software de gestión
+        y prospección, la siguiente etapa estratégica corporativa incorporará la integración
+        nativa con la API oficial de WhatsApp Business.
+      </p>
+    </div>
+
+    <!-- Fase estratégica -->
+    <div class="phase-card">
+      <div class="phase-icon">
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+          <circle cx="12" cy="12" r="10"/>
+          <polyline points="12 6 12 12 16 14"/>
+        </svg>
+      </div>
+      <div class="phase-content">
+        <span class="phase-label">FASE ESTRATÉGICA INMEDIATA</span>
+        <h3 class="phase-title">Conexión Global WhatsApp Cloud API</h3>
+        <p class="phase-description">
+          Próximo despliegue técnico del sistema para evitar absentismo clínico y retrasos de comunicación.
+        </p>
+      </div>
+    </div>
+
+    <!-- Beneficios -->
+    <div class="benefits-grid">
+      <div class="benefit-card">
+        <span class="benefit-tag">BENEFICIO 01</span>
+        <h4 class="benefit-title">Automatización de Recordatorios</h4>
+        <p class="benefit-description">
+          Envío dinámico de notificaciones con botón de confirmación automática de citas por WhatsApp,
+          disminuyendo el ausentismo en más del 35%.
+        </p>
+      </div>
+      <div class="benefit-card">
+        <span class="benefit-tag">BENEFICIO 02</span>
+        <h4 class="benefit-title">Seguimiento Instantáneo</h4>
+        <p class="benefit-description">
+          Atención comercial acelerada de prospectos que entren por la web con alertas en tiempo real
+          y flujos conversacionales interactivos.
+        </p>
+      </div>
+    </div>
+
+  </div>
+   
+  
+
+  <!-- COLUMNA DERECHA: imagen del teléfono -->
+  <div class="roadmap-right">
+    <div class="phone-wrapper">
+      <img
+        src={phoneImageSrc}
+        alt={phoneImageAlt}
+        class="phone-image"
+        loading="lazy"
+      />
+    </div>
+  </div>
+</section>
+
+<script>
+    import '../scripts/roadmap'
+</script>

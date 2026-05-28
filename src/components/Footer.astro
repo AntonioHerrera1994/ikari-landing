@@ -1,0 +1,175 @@
+---
+import '../styles/footer.css'
+
+interface Props {
+  currentYear?: number;
+}
+
+const { currentYear = new Date().getFullYear() } = Astro.props;
+
+const navColumns = [
+  {
+    heading: "Producto",
+    links: [
+      { label: "Ikari CRM",            href: "#crm"           },
+      { label: "Gestión Interna",       href: "#gestion"       },
+      { label: "Email Marketing",       href: "#marketing"     },
+      { label: "Pipelines de Venta",    href: "#pipelines"     },
+      { label: "API WhatsApp Business", href: "#whatsapp"      },
+      { label: "Reportes y Métricas",   href: "#reportes"      },
+    ],
+  },
+  {
+    heading: "Sectores",
+    links: [
+      { label: "Clínicas y Salud",        href: "#salud"        },
+      { label: "Agencias y Consultoras",  href: "#agencias"     },
+      { label: "Bienes Raíces",           href: "#real-estate"  },
+      { label: "Multi-Sede",              href: "#multisede"    },
+      { label: "Control Financiero",      href: "#finanzas"     },
+    ],
+  },
+  {
+    heading: "Compañía",
+    links: [
+      { label: "Sobre Ikari",   href: "#about"   },
+      { label: "Roadmap",       href: "#roadmap" },
+      { label: "Blog",          href: "#blog"    },
+      { label: "Contacto",      href: "#contact" },
+    ],
+  },
+  {
+    heading: "Legal",
+    links: [
+      { label: "Términos de Uso",         href: "#terminos"   },
+      { label: "Política de Privacidad",  href: "#privacidad" },
+      { label: "Política de Cookies",     href: "#cookies"    },
+      { label: "RGPD / Cumplimiento",     href: "#rgpd"       },
+    ],
+  },
+];
+
+const socialLinks = [
+  {
+    label: "LinkedIn",
+    href: "#linkedin",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/>
+      <rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/>
+    </svg>`,
+  },
+  {
+    label: "Twitter / X",
+    href: "#twitter",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231 5.45-6.231Zm-1.161 17.52h1.833L7.084 4.126H5.117z"/>
+    </svg>`,
+  },
+  {
+    label: "Instagram",
+    href: "#instagram",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
+      <rect x="2" y="2" width="20" height="20" rx="5" ry="5"/>
+      <path d="M16 11.37A4 4 0 1 1 12.63 8 4 4 0 0 1 16 11.37z"/>
+      <line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/>
+    </svg>`,
+  },
+  {
+    label: "YouTube",
+    href: "#youtube",
+    icon: `<svg width="18" height="18" viewBox="0 0 24 24" fill="currentColor">
+      <path d="M22.54 6.42a2.78 2.78 0 0 0-1.95-1.96C18.88 4 12 4 12 4s-6.88 0-8.59.46a2.78 2.78 0 0 0-1.95 1.96A29 29 0 0 0 1 12a29 29 0 0 0 .46 5.58A2.78 2.78 0 0 0 3.41 19.6C5.12 20 12 20 12 20s6.88 0 8.59-.46a2.78 2.78 0 0 0 1.95-1.95A29 29 0 0 0 23 12a29 29 0 0 0-.46-5.58z"/>
+      <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
+    </svg>`,
+  },
+];
+---
+
+<footer class="ikari-footer">
+
+  <!-- ── Banda superior CTA ── -->
+  <div class="footer-cta-band">
+    <div class="footer-cta-inner">
+      <div class="footer-cta-text">
+        <span class="footer-cta-eyebrow">¿Listo para anclar tu negocio?</span>
+        <h3 class="footer-cta-title">Solicita una demo gratuita de Ikari</h3>
+      </div>
+      <a href="#demo" class="footer-cta-btn">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+          <path d="M5 12h14M12 5l7 7-7 7"/>
+        </svg>
+        Ver demo en vivo
+      </a>
+    </div>
+  </div>
+
+  <!-- ── Cuerpo del footer ── -->
+  <div class="footer-body">
+
+    <!-- Marca + descripción + redes -->
+    <div class="footer-brand-col">
+      <a href="#" class="footer-logo" aria-label="Ikari — inicio">
+        <span class="footer-logo-mark">錨</span>
+        <span class="footer-logo-text">Ikari</span>
+      </a>
+      <p class="footer-tagline">
+        CRM &amp; Gestión Interna para clínicas, agencias y empresas que necesitan un
+        <strong>punto de apoyo firme</strong> para escalar sin perder el control.
+      </p>
+
+      <!-- Badges de nichos -->
+      <div class="footer-badges">
+        <span class="footer-badge">⚕ Salud</span>
+        <span class="footer-badge">📋 Agencias</span>
+        <span class="footer-badge">🏢 Real Estate</span>
+      </div>
+
+      <!-- Redes sociales -->
+      <div class="footer-socials">
+        {socialLinks.map((s) => (
+          <a href={s.href} class="social-btn" aria-label={s.label} set:html={s.icon} />
+        ))}
+      </div>
+    </div>
+
+    <!-- Columnas de navegación -->
+    <nav class="footer-nav-grid" aria-label="Navegación del footer">
+      {navColumns.map((col) => (
+        <div class="footer-nav-col">
+          <p class="footer-nav-heading">{col.heading}</p>
+          <ul class="footer-nav-list">
+            {col.links.map((link) => (
+              <li>
+                <a href={link.href} class="footer-nav-link">{link.label}</a>
+              </li>
+            ))}
+          </ul>
+        </div>
+      ))}
+    </nav>
+
+  </div>
+
+  <!-- ── Barra inferior ── -->
+  <div class="footer-bottom">
+    <div class="footer-bottom-inner">
+      <p class="footer-copy">
+        © {currentYear} <strong>Ikari CRM</strong>. Todos los derechos reservados.
+        Desarrollado con precisión en <span class="footer-heart">♥</span> para escalar negocios.
+      </p>
+      <div class="footer-bottom-links">
+        <a href="#terminos" class="footer-bottom-link">Términos</a>
+        <span class="footer-dot" aria-hidden="true">·</span>
+        <a href="#privacidad" class="footer-bottom-link">Privacidad</a>
+        <span class="footer-dot" aria-hidden="true">·</span>
+        <a href="#cookies" class="footer-bottom-link">Cookies</a>
+      </div>
+    </div>
+  </div>
+
+</footer>
+
+<script>
+    import '../scripts/footer'
+</script>

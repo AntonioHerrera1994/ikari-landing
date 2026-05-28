@@ -1,0 +1,377 @@
+/* RoadmapWhatsApp.css */
+
+/* ─── Variables ─────────────────────────────────────── */
+:root {
+  --rw-navy:       #1a1f4e;
+  --rw-indigo:     #3b41c5;
+  --rw-indigo-mid: #4f46e5;
+  --rw-purple-lt:  #ededfb;
+  --rw-purple-tag: #6366f1;
+  --rw-green:      #22c55e;
+  --rw-gray-100:   #f8f8fc;
+  --rw-gray-200:   #e8e8f0;
+  --rw-gray-400:   #9095b0;
+  --rw-gray-600:   #5a5f7a;
+  --rw-gray-800:   #2e3250;
+  --rw-white:      #ffffff;
+
+  --rw-radius-sm:  6px;
+  --rw-radius-md:  12px;
+  --rw-radius-lg:  16px;
+
+  --rw-shadow-card: 0 2px 12px rgba(60, 60, 120, 0.08);
+  --rw-shadow-btn:  0 4px 20px rgba(63, 66, 197, 0.35);
+
+  --rw-font-display: 'Sora', 'Nunito', sans-serif;
+  --rw-font-body:    'DM Sans', 'Segoe UI', sans-serif;
+}
+
+/* ─── Layout principal ───────────────────────────────── */
+.roadmap-section {
+  display: grid;
+  grid-template-columns: 1fr 420px;
+  gap: 56px;
+  align-items: start;
+      padding: 5em 2.5rem 3rem;
+  background: var(--rw-white);
+  font-family: var(--rw-font-body);
+  max-width: 100%;
+  margin: 0 auto;
+}
+
+/* ─── Columna izquierda ─────────────────────────────── */
+.roadmap-left {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+/* ─── Header ────────────────────────────────────────── */
+.roadmap-header {
+  border-left: 4px solid var(--rw-indigo);
+  padding-left: 20px;
+}
+
+.tag-label {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--rw-indigo-mid);
+  letter-spacing: 0.01em;
+  margin-bottom: 12px;
+}
+
+.tag-icon {
+  display: flex;
+  align-items: center;
+}
+
+.roadmap-title {
+  font-family: var(--rw-font-display);
+  font-size: clamp(24px, 3vw, 34px);
+  font-weight: 800;
+  color: var(--rw-navy);
+  line-height: 1.2;
+  margin: 0 0 14px;
+  letter-spacing: -0.02em;
+}
+
+.roadmap-description {
+  font-size: 15px;
+  line-height: 1.7;
+  color: var(--rw-gray-600);
+  margin: 0;
+  max-width: 620px;
+}
+
+/* ─── Fase estratégica ──────────────────────────────── */
+.phase-card {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  background: var(--rw-purple-lt);
+  border: 1px solid rgba(99, 102, 241, 0.15);
+  border-radius: var(--rw-radius-lg);
+  padding: 20px 22px;
+}
+
+.phase-icon {
+  flex-shrink: 0;
+  width: 40px;
+  height: 40px;
+  border-radius: 10px;
+  background: var(--rw-white);
+  border: 1px solid var(--rw-gray-200);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: var(--rw-indigo-mid);
+  margin-top: 2px;
+}
+
+.phase-content {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.phase-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.09em;
+  color: var(--rw-indigo-mid);
+  text-transform: uppercase;
+}
+
+.phase-title {
+  font-family: var(--rw-font-display);
+  font-size: 17px;
+  font-weight: 700;
+  color: var(--rw-navy);
+  margin: 0 0 4px;
+}
+
+.phase-description {
+  font-size: 14px;
+  color: var(--rw-gray-600);
+  line-height: 1.6;
+  margin: 0;
+}
+
+/* ─── Beneficios ────────────────────────────────────── */
+.benefits-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.benefit-card {
+  background: var(--rw-white);
+  border: 1px solid var(--rw-gray-200);
+  border-radius: var(--rw-radius-lg);
+  padding: 20px;
+  box-shadow: var(--rw-shadow-card);
+  transition: box-shadow 0.25s ease, transform 0.25s ease;
+}
+
+.benefit-card:hover {
+  box-shadow: 0 6px 24px rgba(60, 60, 120, 0.13);
+  transform: translateY(-2px);
+}
+
+.benefit-tag {
+  display: inline-block;
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--rw-indigo-mid);
+  background: var(--rw-purple-lt);
+  border-radius: 4px;
+  padding: 3px 8px;
+  margin-bottom: 10px;
+}
+
+.benefit-title {
+  font-family: var(--rw-font-display);
+  font-size: 16px;
+  font-weight: 700;
+  color: var(--rw-navy);
+  margin: 0 0 8px;
+}
+
+.benefit-description {
+  font-size: 13.5px;
+  color: var(--rw-gray-600);
+  line-height: 1.65;
+  margin: 0;
+}
+
+/* ─── Consola de simulación ─────────────────────────── */
+.simulation-console {
+  background: var(--rw-white);
+  border: 1px solid var(--rw-gray-200);
+  border-radius: var(--rw-radius-lg);
+  padding: 24px;
+  box-shadow: var(--rw-shadow-card);
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.console-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.11em;
+  color: var(--rw-gray-400);
+  text-transform: uppercase;
+  margin: 0;
+}
+
+.form-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 14px;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.form-label {
+  font-size: 10.5px;
+  font-weight: 700;
+  letter-spacing: 0.07em;
+  color: var(--rw-gray-400);
+  text-transform: uppercase;
+}
+
+.form-input {
+  font-family: var(--rw-font-body);
+  font-size: 14px;
+  color: var(--rw-gray-800);
+  background: var(--rw-gray-100);
+  border: 1px solid var(--rw-gray-200);
+  border-radius: var(--rw-radius-sm);
+  padding: 10px 14px;
+  outline: none;
+  transition: border-color 0.2s ease, box-shadow 0.2s ease;
+}
+
+.form-input::placeholder {
+  color: var(--rw-gray-400);
+}
+
+.form-input:focus {
+  border-color: var(--rw-indigo-mid);
+  box-shadow: 0 0 0 3px rgba(99, 102, 241, 0.12);
+}
+
+/* ─── Botón simular ─────────────────────────────────── */
+.simulate-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  padding: 14px 24px;
+  background: var(--rw-navy);
+  color: var(--rw-white);
+  font-family: var(--rw-font-display);
+  font-size: 14px;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  border: none;
+  border-radius: var(--rw-radius-md);
+  cursor: pointer;
+  box-shadow: var(--rw-shadow-btn);
+  transition: background 0.22s ease, transform 0.18s ease, box-shadow 0.22s ease;
+}
+
+.simulate-btn:hover {
+  background: var(--rw-indigo-mid);
+  transform: translateY(-1px);
+  box-shadow: 0 8px 28px rgba(63, 66, 197, 0.4);
+}
+
+.simulate-btn:active {
+  transform: translateY(0);
+  box-shadow: var(--rw-shadow-btn);
+}
+
+.simulate-btn.loading {
+  opacity: 0.75;
+  cursor: not-allowed;
+}
+
+/* ─── Feedback ──────────────────────────────────────── */
+.simulation-feedback {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-size: 13.5px;
+  color: #166534;
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  border-radius: var(--rw-radius-sm);
+  padding: 10px 14px;
+  animation: fadeIn 0.3s ease;
+}
+
+.feedback-dot {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--rw-green);
+  flex-shrink: 0;
+  animation: pulse 1.4s ease-in-out infinite;
+}
+
+.simulation-feedback.hidden {
+  display: none;
+}
+
+/* ─── Columna derecha (teléfono) ────────────────────── */
+.roadmap-right {
+  position: sticky;
+  top: 32px;
+  display: flex;
+  justify-content: center;
+}
+
+.phone-wrapper {
+  width: 100%;
+  max-width: 380px;
+  display: flex;
+  justify-content: center;
+  align-items: flex-start;
+  filter: drop-shadow(0 24px 48px rgba(30, 34, 90, 0.18));
+}
+
+.phone-image {
+  width: 100%;
+  height: auto;
+  object-fit: contain;
+  display: block;
+}
+
+/* ─── Animaciones ───────────────────────────────────── */
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(4px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+
+@keyframes pulse {
+  0%, 100% { opacity: 1; }
+  50%       { opacity: 0.4; }
+}
+
+/* ─── Responsive ────────────────────────────────────── */
+@media (max-width: 1024px) {
+  .roadmap-section {
+    grid-template-columns: 1fr;
+    gap: 40px;
+    padding: 48px 24px;
+  }
+
+  .roadmap-right {
+    position: static;
+    order: -1;
+    max-width: 320px;
+    margin: 0 auto;
+  }
+}
+
+@media (max-width: 640px) {
+  .benefits-grid,
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .roadmap-title {
+    font-size: 22px;
+  }
+}

@@ -1,0 +1,109 @@
+
+  @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800;900&display=swap');
+
+  *,
+  *::before,
+  *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  .navbar {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 1.5rem;
+    height: 64px;
+    padding: 0 2.5rem;
+    background: rgba(255, 255, 255, 0.95);
+    backdrop-filter: blur(12px);
+    -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid #ebebf2;
+    font-family: 'Inter', system-ui, sans-serif;
+  }
+
+  /* ── Logo ── */
+  .nav-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.625rem;
+    text-decoration: none;
+    color: #0f0e2c;
+    white-space: nowrap;
+    flex-shrink: 0;
+  }
+
+  .logo-icon {
+    width: 36px;
+    height: 36px;
+    background: #1d1a6e;
+    border-radius: 9px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #ffffff;
+    flex-shrink: 0;
+  }
+
+  .logo-text {
+    font-size: 1rem;
+    letter-spacing: -0.01em;
+    display: flex;
+    align-items: baseline;
+    gap: 0.35rem;
+  }
+
+  .logo-text strong {
+    font-weight: 900;
+    font-size: 1.05rem;
+  }
+
+  .logo-sub {
+    font-weight: 400;
+    font-size: 0.95rem;
+    color: #5a586a;
+  }
+
+  /* ── Center nav pills ── */
+  .nav-links {
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+    list-style: none;
+  }
+
+  .nav-pill {
+    display: inline-block;
+    padding: 0.38rem 1rem;
+    border-radius: 999px;
+    background: #f1f0fc;
+    border: 1px solid #dddcf5;
+    color: #3d3b9e;
+    text-decoration: none;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.07em;
+    text-transform: uppercase;
+    transition: background 0.15s, color 0.15s, border-color 0.15s;
+  }
+
+  .nav-pill:hover {
+    background: #1d1a6e;
+    color: #ffffff;
+    border-color: #1d1a6e;
+  }
+
+  /* ── Clock ── */
+  .nav-clock {
+    font-family: 'SF Mono', 'Fira Code', 'Fira Mono', monospace;
+    font-size: 0.7rem;
+    color: #7a7898;
+    border: 1px solid #dddcf5;
+    padding: 0.32rem 0.8rem;
+    border-radius: 6px;
+    letter-spacing: 0.03em;
+    white-space: nowrap;
+    flex-shrink: 0;
+    background: #fafafe;
+    user-select: none;
+  }
