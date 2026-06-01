@@ -2,156 +2,93 @@
 import '../styles/target.css'
 ---
 
-<section class="mercado-root">
-  <span class="eyebrow">Mercado Target</span>
-  <h2 class="heading">Visión General y Enfoque Multi-Nicho</h2>
-  <p class="lead">
-    Aunque Ikari cuenta con un módulo operativo altamente especializado para el sector médico, su
-    motor principal de CRM está diseñado bajo una arquitectura flexible y universal. Esto permite
-    expandir el impacto del software hacia múltiples nichos comerciales que requieren de manera
-    crítica la captación y el seguimiento de prospectos:
-  </p>
-
-  <div class="layout">
-    <!-- ── Left: nicho list ── -->
-    <div class="nicho-list">
-
-      <button class="nicho-card active" data-nicho="salud">
-        <div class="nicho-icon salud">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
-            <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7" />
-            <path d="M8 8l7 7" /><path d="M9 12h4" /><path d="M11 10v4" />
+<section class="sec-section" id="sectores">
+ 
+  <!-- Header centrado -->
+  <div class="sec-header">
+    <span class="sec-eyebrow">Mercado Target</span>
+    <h2 class="sec-title">Un sistema adaptado<br/>a <em>tu industria.</em></h2>
+    <p class="sec-lead">Selecciona tu sector y descubre cómo Ikari se reconfigura para ti.</p>
+  </div>
+ 
+  <!-- Grid principal -->
+  <div class="sec-layout">
+ 
+    <!-- ── Izquierda: grid 2×2 de sectores ── -->
+    <div class="sec-grid" role="tablist" aria-label="Selecciona tu sector">
+ 
+      <!-- Clínicas -->
+      <button class="sec-card active" data-sector="salud" role="tab" aria-selected="true">
+        <div class="sec-card-icon salud">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M4.5 12.5l8-8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1-7-7"/>
+            <path d="M9 12h4"/><path d="M11 10v4"/>
           </svg>
         </div>
-        <div class="nicho-body">
-          <p class="nicho-title">
-            Clínicas y Centros de Salud
-            <span class="badge salud">Salud &amp; Wellness</span>
-          </p>
-          <p class="nicho-desc">
-            Optimización de consultas, flujos de pacientes, expedientes de historia clínica y
-            asignación de doctores por sede con máxima eficiencia.
-          </p>
-        </div>
+        <p class="sec-card-title">Clínicas y Salud</p>
+        <p class="sec-card-sub">Gestión médica inteligente</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
-
-      <button class="nicho-card" data-nicho="b2b">
-        <div class="nicho-icon b2b">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
-            <rect x="3" y="7" width="18" height="13" rx="2" />
-            <path d="M8 7v-2a2 2 0 0 1 2 -2h4a2 2 0 0 1 2 2v2" />
-            <line x1="12" y1="12" x2="12" y2="12.01" />
-            <path d="M3 13a20 20 0 0 0 18 0" />
+ 
+      <!-- Agencias -->
+      <button class="sec-card" data-sector="agencias" role="tab" aria-selected="false">
+        <div class="sec-card-icon agencias">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="7" width="20" height="14" rx="2"/>
+            <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
+            <line x1="12" y1="12" x2="12" y2="12.01"/>
+            <path d="M3 13a20 20 0 0 0 18 0"/>
           </svg>
         </div>
-        <div class="nicho-body">
-          <p class="nicho-title">
-            Agencias de Servicios y Consultoras
-            <span class="badge b2b">B2B &amp; Servicios</span>
-          </p>
-          <p class="nicho-desc">
-            Gestión de propuestas premium, embudos de prospección detallados y flujos ágiles de
-            comunicación con tomadores de decisión.
-          </p>
-        </div>
+        <p class="sec-card-title">Agencias</p>
+        <p class="sec-card-sub">Pipeline B2B acelerado</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
-
-      <button class="nicho-card" data-nicho="real">
-        <div class="nicho-icon real">
-          <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
-            <path d="M3 21l18 0" /><path d="M9 8l1 0" /><path d="M9 12l1 0" />
-            <path d="M9 16l1 0" /><path d="M14 8l1 0" /><path d="M14 12l1 0" />
-            <path d="M14 16l1 0" />
-            <path d="M5 21v-16a2 2 0 0 1 2 -2h10a2 2 0 0 1 2 2v16" />
+ 
+      <!-- Bienes Raíces -->
+      <button class="sec-card" data-sector="real" role="tab" aria-selected="false">
+        <div class="sec-card-icon real">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M3 21l18 0"/>
+            <path d="M5 21v-16a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
+            <path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/>
+            <path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/>
           </svg>
         </div>
-        <div class="nicho-body">
-          <p class="nicho-title">
-            Bienes Raíces (Real Estate)
-            <span class="badge real">Propiedades</span>
-          </p>
-          <p class="nicho-desc">
-            Seguimiento estricto de leads interesados en propiedades de catálogo, agenda ágil para
-            visitas a inmuebles y asignación de asesores.
-          </p>
-        </div>
+        <p class="sec-card-title">Bienes Raíces</p>
+        <p class="sec-card-sub">Catálogo + CRM integrado</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
-
+ 
+      <!-- Corporativo -->
+      <button class="sec-card" data-sector="corp" role="tab" aria-selected="false">
+        <div class="sec-card-icon corp">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <rect x="2" y="3" width="20" height="14" rx="2"/>
+            <path d="M8 21h8"/><path d="M12 17v4"/>
+            <path d="M7 8h2"/><path d="M7 12h2"/>
+            <path d="M15 8h2"/><path d="M15 12h2"/>
+            <path d="M11 8h2"/><path d="M11 12h2"/>
+          </svg>
+        </div>
+        <p class="sec-card-title">Multi-sede</p>
+        <p class="sec-card-sub">Control corporativo total</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
+      </button>
+ 
     </div>
-
-    <!-- ── Right: detail panel ── -->
-    <div class="detail-panel" id="detail-panel" aria-live="polite">
-
-      <div class="panel-header">
-        <div class="panel-left">
-          <div class="panel-icon salud" id="panel-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="22" height="22" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
-              <path d="M4.5 12.5l8 -8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1 -7 -7" />
-              <path d="M8 8l7 7" /><path d="M9 12h4" /><path d="M11 10v4" />
-            </svg>
-          </div>
-          <div>
-            <p class="panel-title" id="panel-title">
-              Adaptación Dinámica: Clínicas y Centros de Salud
-            </p>
-            <p class="panel-sub" id="panel-sub">Cómo se reconfigura el motor de Ikari</p>
-          </div>
-        </div>
-        <span class="schema-badge">Active Schema</span>
-      </div>
-
-      <div class="aspecto">
-        <div>
-          <p class="aspecto-label">Aspecto Crítico de Gestión</p>
-          <p class="aspecto-value" id="aspecto-value">Expedientes, Sobreagenda &amp; Cobros</p>
-        </div>
-        <div class="solucionado" aria-label="Solucionado Nativo">
-          <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-            fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-            stroke-linejoin="round" aria-hidden="true">
-            <circle cx="12" cy="12" r="9" /><path d="M9 12l2 2l4 -4" />
-          </svg>
-          Solucionado Nativo
-        </div>
-      </div>
-
-      <p class="pipeline-label">Fases personalizadas del embudo comercial (Pipeline)</p>
-      <div class="pipeline" id="pipeline" role="list"></div>
-
-      <div class="arq-row">
-        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24"
-          fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-          stroke-linejoin="round" class="arq-icon" aria-hidden="true">
-          <circle cx="12" cy="12" r="1" /><circle cx="12" cy="5" r="1" />
-          <circle cx="19" cy="9" r="1" /><circle cx="19" cy="15" r="1" />
-          <circle cx="12" cy="19" r="1" /><circle cx="5" cy="15" r="1" />
-          <circle cx="5" cy="9" r="1" />
-          <line x1="12" y1="13" x2="12" y2="16" /><line x1="12" y1="6" x2="12" y2="11" />
-          <line x1="13.7" y1="11.5" x2="18.1" y2="9.6" />
-          <line x1="13.7" y1="12.5" x2="18.1" y2="14.4" />
-          <line x1="10.3" y1="11.5" x2="5.9" y2="9.6" />
-          <line x1="10.3" y1="12.5" x2="5.9" y2="14.4" />
-        </svg>
-        <p class="arq-text">
-          <strong>Arquitectura Multi-Nicho:</strong> El sistema conmuta las deudas técnicas, los
-          flujos y las etiquetas visuales para que se adapte exactamente a tu sector sin necesidad
-          de programación a la medida.
-        </p>
-      </div>
-
+ 
+    <!-- ── Derecha: panel dinámico ── -->
+    <div class="sec-panel" id="secPanel" aria-live="polite">
+ 
+      <!-- Los paneles se renderizan por JS -->
+      <div class="sec-panel-inner" id="secPanelInner"></div>
+ 
     </div>
+ 
   </div>
 </section>
 
-
 <script>
-import '../scripts/taget.js'
+  import '../scripts/taget'
 </script>

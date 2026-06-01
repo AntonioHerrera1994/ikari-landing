@@ -1,0 +1,411 @@
+/* PreciosIkari.css — Ikari Brand Colors */
+
+:root {
+  --pk-navy:      #0e1c38;
+  --pk-navy-deep: #091220;
+  --pk-cyan:      #53c6d6;
+  --pk-cyan-lt:   #eef7f9;
+  --pk-blue:      #2b61ae;
+  --pk-coral:     #f26b4f;
+  --pk-lime:      #ccdc60;
+  --pk-lime-lt:   #f5fadf;
+  --pk-lime-dk:   #3a5000;
+  --pk-white:     #ffffff;
+  --pk-gray-50:   #f5f8fb;
+  --pk-gray-200:  #dde8ee;
+  --pk-gray-400:  #8a9aaa;
+  --pk-gray-600:  #4a5a6a;
+  --pk-gray-800:  #1e3050;
+
+  --pk-font-display: 'Sora','Nunito',sans-serif;
+  --pk-font-body:    'DM Sans','Segoe UI',sans-serif;
+
+  --pk-radius-sm:  6px;
+  --pk-radius-md:  12px;
+  --pk-radius-lg:  18px;
+  --pk-radius-xl:  24px;
+
+  --pk-shadow-card:    0 2px 16px rgba(14,28,56,.07);
+  --pk-shadow-feature: 0 8px 40px rgba(14,28,56,.22);
+  --pk-tr:             0.22s ease;
+}
+
+/* ─── Sección ─────────────────────────────────────────── */
+.precios-section {
+  background: var(--pk-gray-50);
+  padding: 88px 48px 80px;
+  font-family: var(--pk-font-body);
+  position: relative;
+  overflow: hidden;
+}
+
+.precios-section::before {
+  content: '';
+  position: absolute;
+  top: -120px; left: 50%;
+  transform: translateX(-50%);
+  width: 700px; height: 700px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(83,198,214,.04) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+/* ─── Header ──────────────────────────────────────────── */
+.precios-header {
+  text-align: center;
+  margin-bottom: 52px;
+  position: relative;
+  z-index: 1;
+}
+
+.precios-eyebrow {
+  display: inline-block;
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: .12em;
+  text-transform: uppercase;
+  color: var(--pk-blue);
+  margin-bottom: 14px;
+}
+
+.precios-title {
+  font-family: var(--pk-font-display);
+  font-size: clamp(26px, 3.5vw, 40px);
+  font-weight: 800;
+  color: var(--pk-navy);
+  line-height: 1.18;
+  letter-spacing: -.025em;
+  margin: 0 0 14px;
+}
+
+.precios-subtitle {
+  font-size: 16px;
+  color: var(--pk-gray-600);
+  margin: 0 0 32px;
+}
+
+/* ─── Toggle ──────────────────────────────────────────── */
+.billing-toggle {
+  display: inline-flex;
+  align-items: center;
+  gap: 12px;
+  background: var(--pk-white);
+  border: 1px solid var(--pk-gray-200);
+  border-radius: 40px;
+  padding: 6px 16px 6px 20px;
+  box-shadow: var(--pk-shadow-card);
+}
+
+.billing-label {
+  font-size: 14px;
+  font-weight: 600;
+  color: var(--pk-gray-400);
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  transition: color var(--pk-tr);
+}
+
+.billing-label.active { color: var(--pk-navy); }
+
+.badge-ahorro {
+  font-size: 10.5px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 20px;
+  background: var(--pk-lime-lt);
+  color: var(--pk-lime-dk);
+}
+
+.toggle-track {
+  position: relative;
+  width: 44px; height: 24px;
+  background: var(--pk-gray-200);
+  border-radius: 12px;
+  border: none;
+  cursor: pointer;
+  transition: background var(--pk-tr);
+  flex-shrink: 0;
+}
+
+.toggle-track.on { background: var(--pk-cyan); }
+
+.toggle-thumb {
+  position: absolute;
+  top: 3px; left: 3px;
+  width: 18px; height: 18px;
+  border-radius: 50%;
+  background: var(--pk-white);
+  box-shadow: 0 1px 4px rgba(0,0,0,.15);
+  transition: transform var(--pk-tr);
+  pointer-events: none;
+}
+
+.toggle-track.on .toggle-thumb { transform: translateX(20px); }
+
+/* ─── Grid ────────────────────────────────────────────── */
+.planes-grid {
+  display: grid;
+  grid-template-columns: 1fr 1.08fr 1fr;
+  gap: 20px;
+  max-width: 1160px;
+  margin: 0 auto 48px;
+  position: relative;
+  z-index: 1;
+  align-items: stretch;
+}
+
+/* ─── Card base ───────────────────────────────────────── */
+.plan-card {
+  background: var(--pk-white);
+  border: 1px solid var(--pk-gray-200);
+  border-radius: var(--pk-radius-xl);
+  padding: 32px 28px;
+  display: flex;
+  flex-direction: column;
+  position: relative;
+  box-shadow: var(--pk-shadow-card);
+  opacity: 0;
+  transform: translateY(20px);
+  transition: opacity .5s ease, transform .5s ease, box-shadow var(--pk-tr);
+}
+
+.plan-card:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 12px 40px rgba(14,28,56,.12);
+}
+
+/* ─── Card destacada ──────────────────────────────────── */
+.plan-card--featured {
+  background: var(--pk-navy);
+  border-color: var(--pk-cyan);
+  box-shadow: var(--pk-shadow-feature);
+  margin-top: -12px;
+  margin-bottom: -12px;
+}
+
+.plan-card--featured:hover {
+  transform: translateY(-4px);
+  box-shadow: 0 20px 56px rgba(14,28,56,.35);
+}
+
+.plan-badge {
+  position: absolute;
+  top: -14px; left: 50%;
+  transform: translateX(-50%);
+  background: var(--pk-cyan);
+  color: var(--pk-navy);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: .08em;
+  text-transform: uppercase;
+  padding: 4px 16px;
+  border-radius: 20px;
+  white-space: nowrap;
+}
+
+/* ─── Plan head ───────────────────────────────────────── */
+.plan-head { display: flex; align-items: flex-start; gap: 14px; margin-bottom: 24px; }
+
+.plan-icon {
+  width: 44px; height: 44px;
+  border-radius: 12px;
+  background: var(--pk-cyan-lt);
+  display: flex; align-items: center; justify-content: center;
+  color: var(--pk-blue);
+  flex-shrink: 0;
+}
+
+.plan-icon--featured { background: rgba(255,255,255,.1); color: var(--pk-cyan); }
+.plan-icon--corp     { background: rgba(83,198,214,.08); border: 1px solid rgba(83,198,214,.2); color: var(--pk-cyan); }
+
+.plan-name {
+  font-family: var(--pk-font-display);
+  font-size: 20px;
+  font-weight: 800;
+  color: var(--pk-navy);
+  letter-spacing: -.02em;
+  margin: 0 0 2px;
+}
+
+.plan-card--featured .plan-name { color: var(--pk-white); }
+
+.plan-tagline { font-size: 12.5px; color: var(--pk-gray-600); margin: 0; line-height: 1.4; }
+.plan-card--featured .plan-tagline { color: rgba(255,255,255,.55); }
+
+/* ─── Precio ──────────────────────────────────────────── */
+.plan-price-wrap { margin-bottom: 24px; }
+
+.plan-price { display: flex; align-items: baseline; gap: 2px; }
+
+.price-currency { font-size: 20px; font-weight: 700; color: var(--pk-navy); }
+.plan-card--featured .price-currency { color: rgba(255,255,255,.65); }
+
+.price-amount {
+  font-family: var(--pk-font-display);
+  font-size: 52px;
+  font-weight: 800;
+  color: var(--pk-navy);
+  letter-spacing: -.04em;
+  line-height: 1;
+  transition: all .25s ease;
+}
+
+.plan-card--featured .price-amount { color: var(--pk-white); }
+
+.price-period { font-size: 14px; color: var(--pk-gray-400); font-weight: 500; margin-left: 2px; }
+.plan-card--featured .price-period { color: rgba(255,255,255,.45); }
+
+.price-note { font-size: 11.5px; color: var(--pk-gray-400); margin: 6px 0 0; min-height: 16px; transition: all var(--pk-tr); }
+.plan-card--featured .price-note { color: rgba(255,255,255,.4); }
+
+/* ─── CTA ─────────────────────────────────────────────── */
+.plan-cta {
+  display: block;
+  text-align: center;
+  padding: 13px 24px;
+  border-radius: var(--pk-radius-md);
+  font-family: var(--pk-font-display);
+  font-size: 14.5px;
+  font-weight: 700;
+  text-decoration: none;
+  margin-bottom: 28px;
+  transition: all var(--pk-tr);
+}
+
+.plan-cta--primary {
+  background: var(--pk-coral);
+  color: var(--pk-white);
+  box-shadow: 0 4px 16px rgba(242,107,79,.35);
+}
+
+.plan-cta--primary:hover {
+  background: #d95a3e;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 24px rgba(242,107,79,.45);
+}
+
+.plan-cta--outline {
+  background: transparent;
+  color: var(--pk-navy);
+  border: 1.5px solid var(--pk-gray-200);
+}
+
+.plan-cta--outline:hover {
+  border-color: var(--pk-cyan);
+  color: var(--pk-blue);
+  background: var(--pk-cyan-lt);
+}
+
+/* ─── Features ────────────────────────────────────────── */
+.plan-features { flex: 1; margin-bottom: 20px; }
+
+.features-label {
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: .09em;
+  text-transform: uppercase;
+  color: var(--pk-gray-400);
+  margin: 0 0 12px;
+}
+
+.plan-card--featured .features-label { color: rgba(255,255,255,.38); }
+
+.features-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
+
+.feat { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.4; }
+
+.feat-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; width: 16px; text-align: center; }
+
+.feat--on { color: var(--pk-gray-800); }
+.plan-card--featured .feat--on { color: rgba(255,255,255,.88); }
+.feat--off { color: var(--pk-gray-400); }
+.plan-card--featured .feat--off { color: rgba(255,255,255,.2); }
+
+.feat--on .feat-icon  { color: var(--pk-cyan); }
+.feat--off .feat-icon { color: var(--pk-gray-400); }
+.plan-card--featured .feat--off .feat-icon { color: rgba(255,255,255,.18); }
+
+.feat--highlight {
+  background: rgba(204,220,96,.08);
+  border: 1px solid rgba(204,220,96,.22);
+  border-radius: var(--pk-radius-sm);
+  padding: 5px 8px;
+  margin: 0 -8px;
+}
+
+.feat-new {
+  display: inline-block;
+  font-size: 9.5px;
+  font-weight: 800;
+  letter-spacing: .1em;
+  text-transform: uppercase;
+  padding: 1px 6px;
+  border-radius: 4px;
+  background: var(--pk-lime);
+  color: var(--pk-lime-dk);
+  margin-left: 6px;
+  vertical-align: middle;
+}
+
+/* ─── Soporte ─────────────────────────────────────────── */
+.plan-support {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 12px;
+  color: var(--pk-gray-400);
+  border-top: 1px solid var(--pk-gray-200);
+  padding-top: 16px;
+  margin-top: auto;
+}
+
+.plan-card--featured .plan-support { color: rgba(255,255,255,.38); border-top-color: rgba(255,255,255,.08); }
+
+/* ─── Trust strip ─────────────────────────────────────── */
+.trust-strip {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 32px;
+  flex-wrap: wrap;
+  padding-top: 8px;
+  position: relative;
+  z-index: 1;
+}
+
+.trust-item {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 13px;
+  color: var(--pk-gray-600);
+  font-weight: 500;
+}
+
+.trust-item svg { color: var(--pk-cyan); flex-shrink: 0; }
+
+/* ─── Animaciones ─────────────────────────────────────── */
+.plan-card.visible { opacity: 1; transform: translateY(0); }
+.plan-card--featured.visible { transform: translateY(0); }
+.plan-card--featured.visible:hover { transform: translateY(-4px); }
+
+#plan-ancla       { transition-delay: .05s; }
+#plan-comando     { transition-delay: .15s; }
+#plan-corporativo { transition-delay: .25s; }
+
+.price-amount.animating { transform: translateY(-6px) scale(.95); opacity: 0; }
+
+/* ─── Responsive ──────────────────────────────────────── */
+@media (max-width: 960px) {
+  .planes-grid { grid-template-columns: 1fr; max-width: 480px; align-items: start; }
+  .plan-card--featured { margin-top: 0; margin-bottom: 0; order: -1; }
+  .precios-section { padding: 64px 24px 56px; }
+  .trust-strip { gap: 20px; }
+}
+
+@media (max-width: 480px) {
+  .precios-title { font-size: 24px; }
+  .billing-toggle { flex-wrap: wrap; justify-content: center; border-radius: var(--pk-radius-lg); padding: 10px 16px; }
+  .trust-strip { flex-direction: column; gap: 12px; align-items: flex-start; padding-left: 16px; }
+}

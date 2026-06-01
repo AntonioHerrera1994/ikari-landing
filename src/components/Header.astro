@@ -31,186 +31,128 @@ const slides = [
 const TOTAL = slides.length;
 ---
 
-
-
-<section class="hero">
+<section class="hp-hero">
  
-  <!-- ── LEFT ── -->
-  <div class="hero-left">
+  <!-- ── Fondo decorativo ── -->
+  <div class="hp-bg" aria-hidden="true">
+    <div class="hp-bg-blob hp-bg-blob--1"></div>
+    <div class="hp-bg-blob hp-bg-blob--2"></div>
+    <div class="hp-bg-dots"></div>
+  </div>
  
-    <span class="hero-badge">
-      <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-           stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-        <circle cx="12" cy="5" r="3"/>
-        <line x1="12" y1="8" x2="12" y2="22"/>
-        <path d="M5 19c1.5 2 3.9 3 7 3s5.5-1 7-3"/>
-        <line x1="4" y1="13" x2="20" y2="13"/>
-      </svg>
-      Sistema Profesional de Gestión
+  <!-- ── Contenido superior ── -->
+  <div class="hp-top">
+ 
+    <span class="hp-badge">
+      <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
+      CRM + Gestión + WhatsApp — todo en uno
     </span>
  
-    <h1 class="hero-title">
-      El Ancla de tu<br>Organización
+    <h1 class="hp-title">
+      Tu negocio, en <em>control total.</em>
     </h1>
  
-    <p class="hero-sub">
-      Estructuramos tu crecimiento comercial y operación interna bajo un mismo
-      punto de apoyo firme, seguro y estable. Consolida y automatiza con Ikari.
+    <p class="hp-subtitle">
+      Ikari gestiona tus leads, citas y finanzas desde un solo sistema.<br/>
+      Sin hojas de cálculo. Sin caos. Sin excusas.
     </p>
  
- 
- 
-    <div class="hero-actions">
-      <a href="#presentacion" class="btn btn-primary">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="3" y="3" width="18" height="18" rx="2"/>
-          <line x1="3" y1="9" x2="21" y2="9"/>
-          <line x1="9" y1="21" x2="9" y2="9"/>
-        </svg>
-        Ver Toda la Presentación
+    <div class="hp-actions">
+      <a href="#demo" class="hp-btn hp-btn--primary">
+        Solicitar demo gratis
+        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
-      <a href="#crm" class="btn btn-ghost-indigo">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/>
-        </svg>
-        Ikari CRM
-      </a>
-      <a href="#gestion" class="btn btn-ghost">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="2" y="3" width="20" height="14" rx="2"/>
-          <line x1="8" y1="21" x2="16" y2="21"/>
-          <line x1="12" y1="17" x2="12" y2="21"/>
-        </svg>
-        Gestión Interna
-      </a>
-      <a href="#whatsapp" class="btn btn-ghost">
-        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-             stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
-          <rect x="5" y="2" width="14" height="20" rx="2"/>
-          <line x1="12" y1="18" x2="12.01" y2="18"/>
-        </svg>
-        Simulador WhatsApp API
+      <a href="#precios" class="hp-btn hp-btn--ghost">
+        Ver planes y precios
       </a>
     </div>
  
   </div>
  
-  <!-- ── RIGHT: tech anchor animation ── -->
-  <div class="hero-right">
+  <!-- ── Widget: simulador de pipeline ── -->
+  <div class="hp-widget">
  
-    <!-- Dot-grid background -->
-    <div class="dot-grid" aria-hidden="true"></div>
- 
-    <!-- Edge fade toward left text -->
-    <div class="edge-fade" aria-hidden="true"></div>
- 
-    <!-- Outer slow ring -->
-    <div class="ring ring-outer" aria-hidden="true">
-      <div class="ring-tick" style="--a:0deg"></div>
-      <div class="ring-tick" style="--a:90deg"></div>
-      <div class="ring-tick" style="--a:180deg"></div>
-      <div class="ring-tick" style="--a:270deg"></div>
+    <!-- Barra superior del widget -->
+    <div class="hp-widget-bar">
+      <div class="hp-widget-bar-left">
+        <div class="hp-widget-dots">
+          <span></span><span></span><span></span>
+        </div>
+        <span class="hp-widget-label">
+          <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18" rx="1"/><rect x="9" y="8" width="6" height="13" rx="1"/><rect x="16" y="5" width="6" height="16" rx="1"/></svg>
+          Pipeline de Ventas — Ikari CRM
+        </span>
+      </div>
+      <div class="hp-widget-bar-right">
+        <span class="hp-online-dot"></span>
+        <span class="hp-online-text">Live</span>
+      </div>
     </div>
  
-    <!-- Mid ring CCW -->
-    <div class="ring ring-mid" aria-hidden="true"></div>
- 
-    <!-- Inner ring -->
-    <div class="ring ring-inner" aria-hidden="true"></div>
- 
-    <!-- Orbiting data nodes (outer orbit) -->
-    <div class="orbit-wrap orbit-a" aria-hidden="true">
-      <div class="orbit-node node-crm">CRM</div>
-    </div>
-    <div class="orbit-wrap orbit-b" aria-hidden="true">
-      <div class="orbit-node node-leads">Leads</div>
-    </div>
-    <div class="orbit-wrap orbit-c" aria-hidden="true">
-      <div class="orbit-node node-wa">WhatsApp</div>
-    </div>
-    <div class="orbit-wrap orbit-d" aria-hidden="true">
-      <div class="orbit-node node-finance">Finanzas</div>
+    <!-- Toolbar del pipeline -->
+    <div class="hp-pipeline-toolbar">
+      <div class="hp-pipeline-meta">
+        <span class="hp-meta-label">Prospectos activos:</span>
+        <span class="hp-meta-count" id="hpTotalCount">0</span>
+      </div>
+      <button class="hp-add-btn" id="hpAddBtn">
+        <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
+        Nuevo lead
+      </button>
     </div>
  
-    <!-- Mid orbit particles -->
-    <div class="orbit-wrap orbit-p1 orbit-fast" aria-hidden="true">
-      <div class="particle"></div>
-    </div>
-    <div class="orbit-wrap orbit-p2 orbit-fast-rev" aria-hidden="true">
-      <div class="particle p-alt"></div>
+    <!-- Kanban board -->
+    <div class="hp-kanban" id="hpKanban">
+      <!-- Se genera por JS -->
     </div>
  
-    <!-- Center anchor glow -->
-    <div class="anchor-glow-outer" aria-hidden="true"></div>
-    <div class="anchor-glow-inner" aria-hidden="true"></div>
- 
-    <!-- Center anchor SVG -->
-    <div class="anchor-wrap" aria-hidden="true">
-      <svg class="anchor-svg" viewBox="0 0 80 96" fill="none" xmlns="http://www.w3.org/2000/svg">
- 
-        <!-- Circuit traces from ring -->
-        <line x1="40" y1="10" x2="40" y2="2"   stroke="#4f4db8" stroke-width="1" stroke-dasharray="2 2"/>
-        <line x1="40" y1="86" x2="40" y2="94"  stroke="#4f4db8" stroke-width="1" stroke-dasharray="2 2"/>
-        <line x1="6"  y1="48" x2="0"  y2="48"  stroke="#4f4db8" stroke-width="1" stroke-dasharray="2 2"/>
-        <line x1="74" y1="48" x2="80" y2="48"  stroke="#4f4db8" stroke-width="1" stroke-dasharray="2 2"/>
- 
-        <!-- Circuit endpoint squares -->
-        <rect x="38" y="0"  width="4" height="4" fill="#6a68d4" rx="1"/>
-        <rect x="38" y="92" width="4" height="4" fill="#6a68d4" rx="1"/>
-        <rect x="0"  y="46" width="4" height="4" fill="#6a68d4" rx="1"/>
-        <rect x="76" y="46" width="4" height="4" fill="#6a68d4" rx="1"/>
- 
-        <!-- Ring at top -->
-        <circle cx="40" cy="11" r="8" stroke="#a8a6f0" stroke-width="2.5"/>
-        <circle cx="40" cy="11" r="3.5" fill="#c4c2f8"/>
- 
-        <!-- Vertical shaft -->
-        <line x1="40" y1="19" x2="40" y2="72" stroke="#a8a6f0" stroke-width="2.5" stroke-linecap="round"/>
- 
-        <!-- Crossbar -->
-        <line x1="18" y1="34" x2="62" y2="34" stroke="#a8a6f0" stroke-width="2.5" stroke-linecap="round"/>
-        <!-- Crossbar end nodes -->
-        <circle cx="18" cy="34" r="3" fill="#6a68d4"/>
-        <circle cx="62" cy="34" r="3" fill="#6a68d4"/>
- 
-        <!-- Bottom curve -->
-        <path d="M12 68 Q12 88 40 88 Q68 88 68 68" stroke="#a8a6f0" stroke-width="2.5" stroke-linecap="round" fill="none"/>
-        <!-- Bottom end nodes -->
-        <circle cx="12" cy="68" r="3.5" fill="#6a68d4"/>
-        <circle cx="68" cy="68" r="3.5" fill="#6a68d4"/>
- 
-        <!-- Diagonal circuit lines from crossbar ends -->
-        <line x1="18" y1="34" x2="10" y2="42" stroke="#3d3b7a" stroke-width="1" stroke-dasharray="3 2"/>
-        <line x1="62" y1="34" x2="70" y2="42" stroke="#3d3b7a" stroke-width="1" stroke-dasharray="3 2"/>
- 
-        <!-- Center dot on shaft -->
-        <circle cx="40" cy="53" r="4" fill="#7b79e0" opacity="0.7"/>
-        <circle cx="40" cy="53" r="2" fill="#c4c2f8"/>
- 
-      </svg>
+    <!-- Footer del widget -->
+    <div class="hp-widget-footer">
+      <span class="hp-footer-note">
+        <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
+        Demo interactivo · Arrastra tarjetas entre fases · Los datos se reinician al recargar
+      </span>
     </div>
  
-    <!-- Floating status pills -->
-    <div class="status-pill pill-top-right" aria-hidden="true">
-      <span class="pill-dot"></span>
-      Multi-sede activo
-    </div>
-    <div class="status-pill pill-bottom-left" aria-hidden="true">
-      <span class="pill-dot dot-amber"></span>
-      Pipeline sincronizado
-    </div>
-    <div class="status-pill pill-top-left" aria-hidden="true">
-      <span class="pill-dot dot-teal"></span>
-      Expedientes CRUD
-    </div>
-    <div class="status-pill pill-bottom-right" aria-hidden="true">
-      <span class="pill-dot"></span>
-      Caja en tiempo real
-    </div>
+  </div>
  
+  <!-- ── Modal agregar lead ── -->
+  <div class="hp-modal-backdrop" id="hpModalBackdrop">
+    <div class="hp-modal" id="hpModal" role="dialog" aria-modal="true" aria-labelledby="hpModalTitle">
+      <div class="hp-modal-header">
+        <h3 class="hp-modal-title" id="hpModalTitle">Agregar nuevo lead</h3>
+        <button class="hp-modal-close" id="hpModalClose" aria-label="Cerrar">
+          <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
+        </button>
+      </div>
+      <div class="hp-modal-body">
+        <div class="hp-field">
+          <label class="hp-field-label" for="hpName">Nombre completo</label>
+          <input type="text" id="hpName" class="hp-field-input" placeholder="Ej. María González" maxlength="40" />
+        </div>
+        <div class="hp-field">
+          <label class="hp-field-label" for="hpPhone">Teléfono</label>
+          <input type="tel" id="hpPhone" class="hp-field-input" placeholder="+52 55 1234 5678" maxlength="20" />
+        </div>
+        <div class="hp-field">
+          <label class="hp-field-label" for="hpSource">Fuente</label>
+          <select id="hpSource" class="hp-field-input hp-field-select">
+            <option value="Web">Sitio web</option>
+            <option value="WA">WhatsApp</option>
+            <option value="IG">Instagram</option>
+            <option value="Ref">Referido</option>
+            <option value="FB">Facebook</option>
+          </select>
+        </div>
+      </div>
+      <div class="hp-modal-footer">
+        <button class="hp-modal-cancel" id="hpModalCancel">Cancelar</button>
+        <button class="hp-modal-submit" id="hpModalSubmit">
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
+          Agregar lead
+        </button>
+      </div>
+    </div>
   </div>
  
 </section>

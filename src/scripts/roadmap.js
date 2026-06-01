@@ -1,70 +1,146 @@
-// RoadmapWhatsApp.js
-// Lógica de la consola de simulación WhatsApp API
+// contacto.js — Simulación de conversación de ventas Ikari
 
 (function () {
   "use strict";
 
-  const btn      = document.getElementById("simular-btn");
-  const feedback = document.getElementById("simulation-feedback");
-  const feedText = document.getElementById("feedback-text");
+  const messagesEl = document.getElementById("ctMessages");
+  if (!messagesEl) return;
 
-  if (!btn) return;
+  /* ── Guión de la conversación ────────────────────────── */
+  const SCRIPT = [
+    { from: "user", text: "Hola, vi su sistema de CRM. ¿Pueden contarme más?", time: "10:02" },
+    { from: "bot",  text: "¡Hola! Somos Ikari — CRM + Gestión Interna para clínicas, agencias y empresas multi-sede. ¿En qué sector trabajas?", time: "10:02" },
+    { from: "user", text: "Tenemos una clínica dental con 3 sedes en la ciudad.", time: "10:03" },
+    { from: "bot",  text: "Perfecto. Tenemos un módulo especializado para salud: agenda médica, expedientes, recordatorios por WhatsApp y control de cobros. ¿Cuándo te gustaría ver una demo?", time: "10:03" },
+    { from: "user", text: "¿Mañana a las 10 AM está disponible?", time: "10:04" },
+    { from: "bot",  text: "¡Confirmado! Te envío el enlace de Zoom ahora y también un resumen de lo que veremos adaptado a clínicas.", time: "10:04" },
+    { from: "system", icon: "📅", text: "Demo agendada — Mañana 10:00 AM · Zoom · Ikari para Salud", time: "10:04" },
+    { from: "user", text: "Excelente, muchas gracias. ¿Tienen prueba gratuita?", time: "10:05" },
+    { from: "bot",  text: "Sí, 14 días sin tarjeta de crédito. Después de la demo te activamos el acceso de inmediato si decides continuar.", time: "10:05" },
+  ];
 
-  /** Construye el texto del mensaje simulado a partir de los inputs */
-  function buildMessage() {
-    const paciente = document.getElementById("paciente")?.value.trim() || "Paciente";
-    const doctor   = document.getElementById("doctor")?.value.trim()   || "el especialista";
-    const fecha    = document.getElementById("fecha")?.value.trim()    || "próximamente";
+  let step = 0;
+  let running = false;
 
-    return (
-      `✅ *IKARI HEALTH*: Estimado(a) *${paciente}*, le recordamos su cita médica agendada ` +
-      `para el día *${fecha}* con el especialista *${doctor}*. ` +
-      `Para confirmar responda con *1*, para reagendar responda con *2*. ¡Le esperamos! 🏥`
-    );
-  }
+  /* ── Crear burbuja de mensaje ────────────────────────── */
+  function createBubble(msg) {
+    const el = document.createElement("div");
+    el.className = `ct-msg ct-msg--${msg.from}`;
 
-  /** Simula el envío con feedback visual */
-  function simulateMessage() {
-    if (btn.classList.contains("loading")) return;
-
-    // Estado de carga
-    btn.classList.add("loading");
-    btn.textContent = "Enviando…";
-
-    // Ocultar feedback previo
-    feedback.classList.add("hidden");
-
-    setTimeout(() => {
-      const msg = buildMessage();
-
-      // Mostrar feedback
-      feedText.textContent = `Mensaje enviado: "${msg.substring(0, 80)}…"`;
-      feedback.classList.remove("hidden");
-
-      // Restaurar botón
-      btn.classList.remove("loading");
-      btn.innerHTML = `
-        <svg width="16" height="16" viewBox="0 0 24 24" fill="none"
-          stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/>
-        </svg>
-        Simular Envío de Recordatorio (WhatsApp Web API)
+    if (msg.from === "system") {
+      el.innerHTML = `
+        <div class="ct-msg-bubble">
+          <span>${msg.icon || "✅"}</span>
+          ${escHtml(msg.text)}
+        </div>
       `;
+    } else {
+      el.innerHTML = `
+        <div class="ct-msg-bubble">${escHtml(msg.text)}</div>
+        <span class="ct-msg-time">${msg.time}</span>
+      `;
+    }
 
-      // Ocultar feedback después de 5 s
-      setTimeout(() => {
-        feedback.classList.add("hidden");
-      }, 5000);
-    }, 1400);
+    return el;
   }
 
-  btn.addEventListener("click", simulateMessage);
+  /* ── Typing indicator ────────────────────────────────── */
+  function showTyping() {
+    const t = document.createElement("div");
+    t.className = "ct-typing";
+    t.id = "ctTyping";
+    t.innerHTML = "<span></span><span></span><span></span>";
+    messagesEl.appendChild(t);
+    scrollBottom();
+    return t;
+  }
 
-  // Permite disparar con Enter desde los inputs
-  const inputs = document.querySelectorAll(".form-input");
-  inputs.forEach((input) => {
-    input.addEventListener("keydown", (e) => {
-      if (e.key === "Enter") simulateMessage();
-    });
-  });
+  function removeTyping() {
+    document.getElementById("ctTyping")?.remove();
+  }
+
+  /* ── Scroll al fondo ─────────────────────────────────── */
+  function scrollBottom() {
+    messagesEl.scrollTop = messagesEl.scrollHeight;
+  }
+
+  /* ── Delays por tipo de emisor ───────────────────────── */
+  function getDelay(msg) {
+    if (msg.from === "user")   return 800;
+    if (msg.from === "system") return 600;
+    // Bot: tiempo proporcional al largo del texto
+    return Math.min(600 + msg.text.length * 18, 2200);
+  }
+
+  /* ── Reproducir un mensaje ───────────────────────────── */
+  function playNext() {
+    if (step >= SCRIPT.length) {
+      // Pausa y reinicia la conversación
+      setTimeout(() => {
+        step = 0;
+        messagesEl.innerHTML = "";
+        setTimeout(play, 1200);
+      }, 4000);
+      return;
+    }
+
+    const msg = SCRIPT[step];
+    const typingDelay = msg.from === "bot" ? getDelay(msg) : 0;
+
+    if (msg.from === "bot") {
+      // Mostrar typing antes del mensaje del bot
+      setTimeout(() => {
+        showTyping();
+        setTimeout(() => {
+          removeTyping();
+          messagesEl.appendChild(createBubble(msg));
+          scrollBottom();
+          step++;
+          setTimeout(playNext, 900);
+        }, typingDelay);
+      }, 400);
+    } else {
+      // Usuario y system: directo con pequeña pausa
+      setTimeout(() => {
+        messagesEl.appendChild(createBubble(msg));
+        scrollBottom();
+        step++;
+        setTimeout(playNext, msg.from === "system" ? 1000 : 700);
+      }, msg.from === "user" ? 500 : 400);
+    }
+  }
+
+  /* ── Iniciar ─────────────────────────────────────────── */
+  function play() {
+    if (running) return;
+    running = true;
+    playNext();
+  }
+
+  /* ── Arrancar cuando la sección es visible ───────────── */
+  const section = document.getElementById("contacto");
+
+  if (section && "IntersectionObserver" in window) {
+    const obs = new IntersectionObserver((entries) => {
+      entries.forEach(e => {
+        if (e.isIntersecting) {
+          setTimeout(play, 500);
+          obs.disconnect();
+        }
+      });
+    }, { threshold: 0.25 });
+
+    obs.observe(section);
+  } else {
+    setTimeout(play, 800);
+  }
+
+  /* ── Utilidades ──────────────────────────────────────── */
+  function escHtml(str) {
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;");
+  }
+
 })();

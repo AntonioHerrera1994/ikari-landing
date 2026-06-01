@@ -1,8 +1,8 @@
-/* ArquitecturaSistema.css */
+/* ArquitecturaSistema.css — Ikari Brand Colors */
 
 .arq-root {
-  font-family: system-ui, -apple-system, sans-serif;
-padding: 5em 2.5rem 3rem;
+  font-family: 'Inter', system-ui, sans-serif;
+  padding: 5em 2.5rem 3rem;
   text-align: center;
 }
 
@@ -11,33 +11,33 @@ padding: 5em 2.5rem 3rem;
   display: inline-flex;
   align-items: center;
   gap: 8px;
-  background: #1e1b4b;
-  color: #fff;
+  background: #0e1c38;
+  color: #53c6d6;
   font-size: 13px;
-  font-weight: 500;
+  font-weight: 600;
   padding: 7px 18px;
   border-radius: 999px;
   margin-bottom: 1.5rem;
-  letter-spacing: 0.02em;
+  letter-spacing: .05em;
+  text-transform: uppercase;
 }
 
-.arq-eyebrow svg {
-  flex-shrink: 0;
-}
+.arq-eyebrow svg { flex-shrink: 0; }
 
 .arq-heading {
   font-size: clamp(1.8rem, 4vw, 2.6rem);
   font-weight: 800;
-  color: #111827;
+  color: #0e1c38;
   margin: 0 0 1rem;
   line-height: 1.15;
   max-width: 640px;
   margin-inline: auto;
+  letter-spacing: -.02em;
 }
 
 .arq-lead {
   font-size: 15px;
-  color: #6b7280;
+  color: #5a6a80;
   line-height: 1.7;
   max-width: 560px;
   margin: 0 auto 3rem;
@@ -67,61 +67,54 @@ padding: 5em 2.5rem 3rem;
 }
 
 .arq-card.light {
-  background: #fff;
-  border: 1px solid #e5e7eb;
+  background: #ffffff;
+  border: 1px solid #dde8ee;
 }
 
 .arq-card.dark {
-  background: #0f172a;
-  border: 1px solid #1e293b;
-  color: #f1f5f9;
+  background: #0e1c38;
+  border: 1px solid #1a3050;
+  color: #e8f2f8;
 }
 
-/* floating pill above card */
+/* pill flotante */
 .arq-card-pill {
   position: absolute;
   top: -18px;
   left: 32px;
   font-size: 11px;
   font-weight: 700;
-  letter-spacing: 0.08em;
+  letter-spacing: .08em;
   text-transform: uppercase;
   padding: 6px 16px;
   border-radius: 999px;
 }
 
-.arq-card-pill.blue {
-  background: #3b82f6;
-  color: #fff;
-}
+.arq-card-pill.blue  { background: #2b61ae; color: #fff; }
+.arq-card-pill.green { background: #ccdc60; color: #2a3800; }
 
-.arq-card-pill.green {
-  background: #10b981;
-  color: #fff;
-}
-
-/* card inner label */
+/* label interno */
 .arq-card-label {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   margin: 0 0 6px;
 }
 
-.arq-card.light .arq-card-label { color: #3b82f6; }
-.arq-card.dark  .arq-card-label { color: #6ee7b7; }
+.arq-card.light .arq-card-label { color: #2b61ae; }
+.arq-card.dark  .arq-card-label { color: #53c6d6; }
 
 .arq-card-title {
   font-size: 1.5rem;
   font-weight: 800;
-  letter-spacing: -0.01em;
+  letter-spacing: -.01em;
   margin: 0 0 20px;
   line-height: 1.1;
 }
 
-.arq-card.light .arq-card-title { color: #111827; }
-.arq-card.dark  .arq-card-title { color: #f8fafc; }
+.arq-card.light .arq-card-title { color: #0e1c38; }
+.arq-card.dark  .arq-card-title { color: #ffffff; }
 
 /* quote block */
 .arq-quote {
@@ -134,33 +127,32 @@ padding: 5em 2.5rem 3rem;
 }
 
 .arq-card.light .arq-quote {
-  background: #eff6ff;
-  border: 1px solid #bfdbfe;
-  color: #1d4ed8;
+  background: #eef7f9;
+  border: 1px solid #b8e8ef;
+  color: #2b61ae;
 }
 
 .arq-card.dark .arq-quote {
-  background: #1e293b;
-  border: 1px solid #334155;
-  color: #94a3b8;
+  background: rgba(83,198,214,.07);
+  border: 1px solid rgba(83,198,214,.15);
+  color: #8fc8d8;
 }
 
-/* pillars section */
+/* pillars */
 .arq-pillars-label {
   font-size: 10px;
   font-weight: 700;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
   text-transform: uppercase;
   margin: 0 0 14px;
 }
 
-.arq-card.light .arq-pillars-label { color: #9ca3af; }
-.arq-card.dark  .arq-pillars-label { color: #64748b; }
+.arq-card.light .arq-pillars-label { color: #8a9aaa; }
+.arq-card.dark  .arq-pillars-label { color: rgba(83,198,214,.4); }
 
 .arq-pillars {
   list-style: none;
-  margin: 0;
-  padding: 0;
+  margin: 0; padding: 0;
   display: flex;
   flex-direction: column;
   gap: 14px;
@@ -174,8 +166,7 @@ padding: 5em 2.5rem 3rem;
 }
 
 .arq-pillar-icon {
-  width: 36px;
-  height: 36px;
+  width: 36px; height: 36px;
   border-radius: 8px;
   display: flex;
   align-items: center;
@@ -183,15 +174,8 @@ padding: 5em 2.5rem 3rem;
   flex-shrink: 0;
 }
 
-.arq-card.light .arq-pillar-icon {
-  background: #f3f4f6;
-  color: #374151;
-}
-
-.arq-card.dark .arq-pillar-icon {
-  background: #1e293b;
-  color: #94a3b8;
-}
+.arq-card.light .arq-pillar-icon { background: #f0f6fa; color: #2b61ae; }
+.arq-card.dark  .arq-pillar-icon { background: rgba(83,198,214,.08); color: #53c6d6; }
 
 .arq-pillar-text {
   font-size: 14px;
@@ -200,15 +184,11 @@ padding: 5em 2.5rem 3rem;
   padding-top: 2px;
 }
 
-.arq-card.light .arq-pillar-text { color: #374151; }
-.arq-card.dark  .arq-pillar-text { color: #cbd5e1; }
+.arq-card.light .arq-pillar-text { color: #3a4a5a; }
+.arq-card.dark  .arq-pillar-text { color: rgba(210,230,240,.8); }
 
-.arq-pillar-text strong {
-  font-weight: 700;
-}
-
-.arq-card.light .arq-pillar-text strong { color: #111827; }
-.arq-card.dark  .arq-pillar-text strong { color: #f1f5f9; }
+.arq-card.light .arq-pillar-text strong { color: #0e1c38; }
+.arq-card.dark  .arq-pillar-text strong { color: #ffffff; }
 
 /* card footer */
 .arq-card-footer {
@@ -220,72 +200,15 @@ padding: 5em 2.5rem 3rem;
   border-top: 1px solid;
   font-size: 10px;
   font-weight: 600;
-  letter-spacing: 0.1em;
+  letter-spacing: .1em;
   text-transform: uppercase;
 }
 
-.arq-card.light .arq-card-footer {
-  border-color: #e5e7eb;
-  color: #9ca3af;
-}
+.arq-card.light .arq-card-footer { border-color: #dde8ee; color: #8a9aaa; }
+.arq-card.dark  .arq-card-footer { border-color: rgba(83,198,214,.1); color: rgba(83,198,214,.35); }
 
-.arq-card.dark .arq-card-footer {
-  border-color: #1e293b;
-  color: #475569;
-}
-
-/* ── Bottom banner ── */
-.arq-banner {
-  max-width: 1100px;
-  margin: 0 auto;
-  background: #1e1b4b;
-  border-radius: 14px;
-  padding: 20px 28px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  gap: 16px;
-  flex-wrap: wrap;
-  text-align: left;
-}
-
-.arq-banner-left {
-  display: flex;
-  align-items: center;
-  gap: 12px;
-  flex: 1;
-  min-width: 0;
-}
-
-.arq-banner-dot {
-  width: 10px;
-  height: 10px;
-  border-radius: 50%;
-  background: #10b981;
-  flex-shrink: 0;
-}
-
-.arq-banner-text {
-  font-size: 14px;
-  font-weight: 500;
-  color: #e0e7ff;
-  line-height: 1.5;
-  margin: 0;
-}
-
-.arq-banner-text strong {
-  color: #fff;
-  font-weight: 700;
-}
-
-.arq-banner-badge {
-  background: #312e81;
-  color: #a5b4fc;
-  font-size: 11px;
-  font-weight: 700;
-  letter-spacing: 0.07em;
-  padding: 8px 16px;
-  border-radius: 8px;
-  white-space: nowrap;
-  flex-shrink: 0;
+/* ── Responsive ── */
+@media (max-width: 640px) {
+  .arq-root { padding: 3.5rem 1rem 2rem; }
+  .arq-card { padding: 24px 20px; }
 }
