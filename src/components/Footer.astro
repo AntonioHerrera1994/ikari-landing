@@ -1,6 +1,6 @@
 ---
 import '../styles/footer.css'
-
+import FooterLogo from '../assets/logoblanco.png'
 interface Props {
   currentYear?: number;
 }
@@ -87,8 +87,7 @@ const socialLinks = [
     <!-- Marca + descripción + redes -->
     <div class="footer-brand-col">
       <a href="#" class="footer-logo" aria-label="Ikari — inicio">
-        <span class="footer-logo-mark">錨</span>
-        <span class="footer-logo-text">Ikari</span>
+      <img src={FooterLogo.src}/>
       </a>
       <p class="footer-tagline">
         CRM &amp; Gestión Interna para clínicas, agencias y empresas que necesitan un

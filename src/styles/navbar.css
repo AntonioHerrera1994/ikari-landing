@@ -6,7 +6,7 @@
   align-items: center;
   justify-content: space-between;
   gap: 1.5rem;
-  height: 64px;
+  height: 72px;
   padding: 0 2.5rem;
   background: rgba(255, 255, 255, 0.96);
   backdrop-filter: blur(12px);
@@ -25,27 +25,10 @@
   flex-shrink: 0;
 }
 
-.logo-icon {
-  width: 36px; height: 36px;
-  background: var(--navy);
-  border-radius: 9px;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  color: var(--cyan);
-  flex-shrink: 0;
+.nav-logo img{
+max-width: 140px;
+height: auto;
 }
-
-.logo-text {
-  font-size: 1rem;
-  letter-spacing: -0.01em;
-  display: flex;
-  align-items: baseline;
-  gap: 0.35rem;
-}
-
-.logo-text strong { font-weight: 900; font-size: 1.05rem; color: var(--navy); }
-.logo-sub { font-weight: 400; font-size: 0.95rem; color: var(--gray-600); }
 
 .nav-links {
   display: flex;

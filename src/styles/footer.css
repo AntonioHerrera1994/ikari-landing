@@ -109,23 +109,10 @@
 
 .footer-logo { display: inline-flex; align-items: center; gap: 10px; text-decoration: none; }
 
-.footer-logo-mark {
-  font-size: 28px;
-  line-height: 1;
-  filter: drop-shadow(0 0 8px rgba(83,198,214,.6));
-  transition: filter var(--tr);
-}
+.footer-brand-col img{
 
-.footer-logo:hover .footer-logo-mark {
-  filter: drop-shadow(0 0 16px rgba(83,198,214,.9));
-}
-
-.footer-logo-text {
-  font-family: var(--font-display);
-  font-size: 26px;
-  font-weight: 800;
-  color: var(--white);
-  letter-spacing: -.03em;
+  max-width: 130px;
+  height: auto;
 }
 
 .footer-tagline { font-size: 14px; line-height: 1.72; color: var(--white-60); max-width: 280px; }
