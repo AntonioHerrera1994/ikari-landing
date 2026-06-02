@@ -1,4 +1,5 @@
 // contacto.js — Simulación de conversación de ventas Ikari
+// La conversación se reproduce UNA VEZ y permanece visible hasta recargar la página
 
 (function () {
   "use strict";
@@ -20,7 +21,6 @@
   ];
 
   let step = 0;
-  let running = false;
 
   /* ── Crear burbuja de mensaje ────────────────────────── */
   function createBubble(msg) {
@@ -52,7 +52,6 @@
     t.innerHTML = "<span></span><span></span><span></span>";
     messagesEl.appendChild(t);
     scrollBottom();
-    return t;
   }
 
   function removeTyping() {
@@ -64,31 +63,20 @@
     messagesEl.scrollTop = messagesEl.scrollHeight;
   }
 
-  /* ── Delays por tipo de emisor ───────────────────────── */
-  function getDelay(msg) {
-    if (msg.from === "user")   return 800;
-    if (msg.from === "system") return 600;
-    // Bot: tiempo proporcional al largo del texto
-    return Math.min(600 + msg.text.length * 18, 2200);
+  /* ── Delay de escritura del bot ──────────────────────── */
+  function getTypingDelay(msg) {
+    if (msg.from === "system") return 400;
+    return Math.min(500 + msg.text.length * 16, 2000);
   }
 
-  /* ── Reproducir un mensaje ───────────────────────────── */
+  /* ── Reproducir siguiente mensaje ────────────────────── */
   function playNext() {
-    if (step >= SCRIPT.length) {
-      // Pausa y reinicia la conversación
-      setTimeout(() => {
-        step = 0;
-        messagesEl.innerHTML = "";
-        setTimeout(play, 1200);
-      }, 4000);
-      return;
-    }
+    // Conversación terminada — queda visible sin reiniciarse
+    if (step >= SCRIPT.length) return;
 
     const msg = SCRIPT[step];
-    const typingDelay = msg.from === "bot" ? getDelay(msg) : 0;
 
     if (msg.from === "bot") {
-      // Mostrar typing antes del mensaje del bot
       setTimeout(() => {
         showTyping();
         setTimeout(() => {
@@ -96,43 +84,36 @@
           messagesEl.appendChild(createBubble(msg));
           scrollBottom();
           step++;
-          setTimeout(playNext, 900);
-        }, typingDelay);
-      }, 400);
+          setTimeout(playNext, 800);
+        }, getTypingDelay(msg));
+      }, 350);
     } else {
-      // Usuario y system: directo con pequeña pausa
+      const pause = msg.from === "user" ? 500 : 350;
       setTimeout(() => {
         messagesEl.appendChild(createBubble(msg));
         scrollBottom();
         step++;
-        setTimeout(playNext, msg.from === "system" ? 1000 : 700);
-      }, msg.from === "user" ? 500 : 400);
+        setTimeout(playNext, msg.from === "system" ? 900 : 650);
+      }, pause);
     }
   }
 
-  /* ── Iniciar ─────────────────────────────────────────── */
-  function play() {
-    if (running) return;
-    running = true;
-    playNext();
-  }
-
-  /* ── Arrancar cuando la sección es visible ───────────── */
+  /* ── Arrancar cuando la sección entra al viewport ────── */
   const section = document.getElementById("contacto");
 
   if (section && "IntersectionObserver" in window) {
     const obs = new IntersectionObserver((entries) => {
       entries.forEach(e => {
         if (e.isIntersecting) {
-          setTimeout(play, 500);
-          obs.disconnect();
+          setTimeout(playNext, 600);
+          obs.disconnect(); // solo una vez
         }
       });
-    }, { threshold: 0.25 });
+    }, { threshold: 0.2 });
 
     obs.observe(section);
   } else {
-    setTimeout(play, 800);
+    setTimeout(playNext, 800);
   }
 
   /* ── Utilidades ──────────────────────────────────────── */

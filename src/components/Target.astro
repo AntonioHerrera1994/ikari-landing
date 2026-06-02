@@ -3,18 +3,17 @@ import '../styles/target.css'
 ---
 
 <section class="sec-section" id="sectores">
- 
-  <!-- Header centrado -->
+
   <div class="sec-header">
-  <span class="arq-eyebrow">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" aria-hidden="true">
-      <rect x="2" y="3" width="20" height="14" rx="2"/>
-      <path d="M8 21h8"/><path d="M12 17v4"/>
-    </svg>
-  Soluciones para cada Sector
-  </span>
+    <span class="arq-eyebrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8"/><path d="M12 17v4"/>
+      </svg>
+      Soluciones para cada Sector
+    </span>
     <h2 class="sec-title">Un sistema adaptado<br/>a <em>tu industria.</em></h2>
     <p class="sec-lead">Selecciona tu sector y descubre cómo Ikari se reconfigura para ti.</p>
   </div>
@@ -22,13 +21,13 @@ import '../styles/target.css'
   <!-- Grid principal -->
   <div class="sec-layout">
  
-    <!-- ── Izquierda: grid 2×2 de sectores ── -->
+    <!-- ── Izquierda -->
     <div class="sec-grid" role="tablist" aria-label="Selecciona tu sector">
  
       <!-- Clínicas -->
       <button class="sec-card active" data-sector="salud" role="tab" aria-selected="true">
         <div class="sec-card-icon salud">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M4.5 12.5l8-8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1-7-7"/>
             <path d="M9 12h4"/><path d="M11 10v4"/>
           </svg>
@@ -41,7 +40,7 @@ import '../styles/target.css'
       <!-- Agencias -->
       <button class="sec-card" data-sector="agencias" role="tab" aria-selected="false">
         <div class="sec-card-icon agencias">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <rect x="2" y="7" width="20" height="14" rx="2"/>
             <path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/>
             <line x1="12" y1="12" x2="12" y2="12.01"/>
@@ -56,7 +55,7 @@ import '../styles/target.css'
       <!-- Bienes Raíces -->
       <button class="sec-card" data-sector="real" role="tab" aria-selected="false">
         <div class="sec-card-icon real">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M3 21l18 0"/>
             <path d="M5 21v-16a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/>
             <path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M9 16l1 0"/>
@@ -68,30 +67,52 @@ import '../styles/target.css'
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
  
-      <!-- Corporativo -->
-      <button class="sec-card" data-sector="corp" role="tab" aria-selected="false">
-        <div class="sec-card-icon corp">
-          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
-            <rect x="2" y="3" width="20" height="14" rx="2"/>
-            <path d="M8 21h8"/><path d="M12 17v4"/>
-            <path d="M7 8h2"/><path d="M7 12h2"/>
-            <path d="M15 8h2"/><path d="M15 12h2"/>
-            <path d="M11 8h2"/><path d="M11 12h2"/>
+      <!-- Educación -->
+      <button class="sec-card" data-sector="educacion" role="tab" aria-selected="false">
+        <div class="sec-card-icon educacion">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M22 10v6M2 10l10-5 10 5-10 5z"/>
+            <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
           </svg>
         </div>
-        <p class="sec-card-title">Multi-sede</p>
-        <p class="sec-card-sub">Control corporativo total</p>
+        <p class="sec-card-title">Educación</p>
+        <p class="sec-card-sub">Academias y colegios</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
+      </button>
+ 
+      <!-- Estética -->
+      <button class="sec-card" data-sector="estetica" role="tab" aria-selected="false">
+        <div class="sec-card-icon estetica">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
+          </svg>
+        </div>
+        <p class="sec-card-title">Estética & Wellness</p>
+        <p class="sec-card-sub">Salones, spas y bienestar</p>
+        <span class="sec-card-indicator" aria-hidden="true"></span>
+      </button>
+ 
+      <!-- Restaurantes -->
+      <button class="sec-card" data-sector="restaurantes" role="tab" aria-selected="false">
+        <div class="sec-card-icon restaurantes">
+          <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M18 8h1a4 4 0 0 1 0 8h-1"/>
+            <path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/>
+            <line x1="6" y1="1" x2="6" y2="4"/>
+            <line x1="10" y1="1" x2="10" y2="4"/>
+            <line x1="14" y1="1" x2="14" y2="4"/>
+          </svg>
+        </div>
+        <p class="sec-card-title">Restaurantes</p>
+        <p class="sec-card-sub">Cadenas y franquicias</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
  
     </div>
  
-    <!-- ── Derecha: panel dinámico ── -->
+    <!-- ── Derecha -->
     <div class="sec-panel" id="secPanel" aria-live="polite">
- 
-      <!-- Los paneles se renderizan por JS -->
       <div class="sec-panel-inner" id="secPanelInner"></div>
- 
     </div>
  
   </div>

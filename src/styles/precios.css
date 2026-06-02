@@ -47,9 +47,11 @@
 }
 
 .precios-subtitle {
-  font-size: 16px;
-  color: var(--gray-600);
-  margin: 0 0 32px;
+ font-size: 17px;
+  color: #4d5763;
+  line-height: 1.7;
+  max-width: 590px;
+  margin: 0 auto 3rem;
 }
 
 /* ─── Toggle ──────────────────────────────────────────── */
@@ -281,7 +283,7 @@
 
 .features-list { list-style: none; display: flex; flex-direction: column; gap: 9px; }
 
-.feat { display: flex; align-items: flex-start; gap: 9px; font-size: 13.5px; line-height: 1.4; }
+.feat { display: flex; align-items: flex-start; gap: 9px; font-size: 15px; line-height: 1.4; }
 
 .feat-icon { font-size: 13px; flex-shrink: 0; margin-top: 1px; width: 16px; text-align: center; }
 

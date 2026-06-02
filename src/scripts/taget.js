@@ -8,7 +8,7 @@
     salud: {
       color:    "#53c6d6",
       colorDk:  "#0e6678",
-      eyebrow:  "⚕ Clínicas y Centros de Salud",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4.5 12.5l8-8a4.94 4.94 0 0 1 7 7l-8 8a4.94 4.94 0 0 1-7-7"/><path d="M9 12h4"/><path d="M11 10v4"/></svg> Clínicas y Centros de Salud`,
       eyeBg:    "#eef7f9",
       eyeColor: "#0e6678",
       titleLine1: "Gestión clínica sin",
@@ -31,7 +31,7 @@
     agencias: {
       color:    "#2b61ae",
       colorDk:  "#1a4a8a",
-      eyebrow:  "📋 Agencias y Consultoras",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="7" width="20" height="14" rx="2"/><path d="M16 7V5a2 2 0 0 0-2-2h-4a2 2 0 0 0-2 2v2"/><line x1="12" y1="12" x2="12" y2="12.01"/><path d="M3 13a20 20 0 0 0 18 0"/></svg> Agencias y Consultoras`,
       eyeBg:    "#e8f0fb",
       eyeColor: "#1a4a8a",
       titleLine1: "Cierra más contratos,",
@@ -54,7 +54,7 @@
     real: {
       color:    "#f26b4f",
       colorDk:  "#8c3a20",
-      eyebrow:  "🏢 Bienes Raíces",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 21l18 0"/><path d="M5 21v-16a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2v16"/><path d="M9 8l1 0"/><path d="M9 12l1 0"/><path d="M14 8l1 0"/><path d="M14 12l1 0"/></svg> Bienes Raíces`,
       eyeBg:    "#fff3f0",
       eyeColor: "#8c3a20",
       titleLine1: "Del primer contacto",
@@ -68,34 +68,80 @@
         "App móvil para asesores en campo",
       ],
       stats: [
-        { n: "0",   l: "Leads sin seguimiento" },
+        { n: "0",    l: "Leads sin seguimiento" },
         { n: "+40%", l: "Visitas realizadas" },
-        { n: "1",   l: "Sistema para todo" },
+        { n: "1",    l: "Sistema para todo" },
       ],
       cta: "Ver demo para real estate",
     },
-    corp: {
-      color:    "#ccdc60",
-      colorDk:  "#3a5000",
-      eyebrow:  "🏗 Multi-sede y Corporativo",
-      eyeBg:    "#f5fadf",
-      eyeColor: "#3a5000",
-      titleLine1: "Una operación.",
-      titleLine2: "Múltiples sedes.",
-      desc: "Administra todas tus sedes desde un panel central. Usuarios ilimitados, WhatsApp Business API oficial, reportes consolidados y un gestor de cuenta que conoce tu negocio.",
+    educacion: {
+      color:    "#7c3aed",
+      colorDk:  "#6d28d9",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 10v6M2 10l10-5 10 5-10 5z"/><path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/></svg> Educación y Academias`,
+      eyeBg:    "#f0eafe",
+      eyeColor: "#6d28d9",
+      titleLine1: "Del prospecto inscrito",
+      titleLine2: "al alumno fidelizado.",
+      desc: "Gestiona inscripciones, seguimiento de prospectos, pagos de colegiatura y comunicación con padres o alumnos desde un solo sistema integrado.",
       features: [
-        "Dashboard consolidado multi-sede",
-        "WhatsApp Business API oficial (Meta)",
-        "Usuarios, roles y permisos ilimitados",
-        "Reportes comparativos por sede y globales",
-        "Onboarding dedicado y gestor de cuenta",
+        "Pipeline de inscripción por ciclo escolar",
+        "Seguimiento de prospectos y visitas al plantel",
+        "Control de pagos y adeudos por alumno",
+        "Comunicación masiva con padres de familia",
+        "Reportes de ocupación y deserción escolar",
       ],
       stats: [
-        { n: "∞",    l: "Sedes activas" },
-        { n: "99.9%", l: "Uptime garantizado" },
-        { n: "24/7",  l: "Soporte prioritario" },
+        { n: "+50%", l: "Tasa de inscripción" },
+        { n: "−40%", l: "Deserción escolar" },
+        { n: "1",    l: "Sistema integrado" },
       ],
-      cta: "Ver demo corporativo",
+      cta: "Ver demo para educación",
+    },
+    estetica: {
+      color:    "#db2777",
+      colorDk:  "#9d174d",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/></svg> Estética & Wellness`,
+      eyeBg:    "#fce8f3",
+      eyeColor: "#9d174d",
+      titleLine1: "Más citas, clientes",
+      titleLine2: "que regresan siempre.",
+      desc: "Agenda de servicios por estilista o terapeuta, historial de tratamientos, control de productos e inventario. Tu salón o spa operando sin papel ni confusión.",
+      features: [
+        "Agenda de citas por estilista o cabina",
+        "Historial de servicios y tratamientos por cliente",
+        "Control de inventario de productos",
+        "Recordatorios automáticos de cita por WhatsApp",
+        "Programa de lealtad y seguimiento postventa",
+      ],
+      stats: [
+        { n: "+45%", l: "Retención de clientes" },
+        { n: "−30%", l: "Citas no asistidas" },
+        { n: "360°", l: "Vista del cliente" },
+      ],
+      cta: "Ver demo para estética",
+    },
+    restaurantes: {
+      color:    "#d97706",
+      colorDk:  "#92400e",
+      eyebrow:  `<svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M18 8h1a4 4 0 0 1 0 8h-1"/><path d="M2 8h16v9a4 4 0 0 1-4 4H6a4 4 0 0 1-4-4V8z"/><line x1="6" y1="1" x2="6" y2="4"/><line x1="10" y1="1" x2="10" y2="4"/><line x1="14" y1="1" x2="14" y2="4"/></svg> Restaurantes y Franquicias`,
+      eyeBg:    "#fef3e2",
+      eyeColor: "#92400e",
+      titleLine1: "Operación centralizada,",
+      titleLine2: "cada sucursal bajo control.",
+      desc: "Gestiona reservaciones, controla proveedores, mide el desempeño de cada sucursal y mantén comunicación fluida con tu equipo desde un panel unificado.",
+      features: [
+        "Gestión de reservaciones y listas de espera",
+        "Control de proveedores y órdenes de compra",
+        "Dashboard por sucursal con métricas clave",
+        "CRM de clientes frecuentes y programas VIP",
+        "Seguimiento de leads para eventos y banquetes",
+      ],
+      stats: [
+        { n: "+35%", l: "Ocupación de mesas" },
+        { n: "100%", l: "Visibilidad operativa" },
+        { n: "1",    l: "Panel para todo" },
+      ],
+      cta: "Ver demo para restaurantes",
     },
   };
 
@@ -168,7 +214,6 @@
   cards.forEach(card => {
     card.addEventListener("click", () => selectSector(card.dataset.sector));
 
-    // Teclado: Enter / Space
     card.addEventListener("keydown", (e) => {
       if (e.key === "Enter" || e.key === " ") {
         e.preventDefault();
