@@ -27,6 +27,7 @@
         { n: "100%", l: "Trazabilidad" },
       ],
       cta: "Ver demo para clínicas",
+      ctaHref: "https://wa.me/526632477816?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20Ikari%20para%20cl%C3%ADnicas%20y%20centros%20de%20salud.%20%C2%BFPodr%C3%ADan%20darme%20informaci%C3%B3n%20sobre%20el%20sistema%3F",
     },
     agencias: {
       color:    "#2b61ae",
@@ -49,7 +50,8 @@
         { n: "3×",   l: "Velocidad de cierre" },
         { n: "0",    l: "Leads perdidos" },
       ],
-      cta: "Ver demo para agencias",
+      cta: "Próximamente",
+      ctaDisabled: true,
     },
     real: {
       color:    "#f26b4f",
@@ -72,7 +74,8 @@
         { n: "+40%", l: "Visitas realizadas" },
         { n: "1",    l: "Sistema para todo" },
       ],
-      cta: "Ver demo para real estate",
+      cta: "Próximamente",
+      ctaDisabled: true,
     },
     educacion: {
       color:    "#7c3aed",
@@ -95,7 +98,8 @@
         { n: "−40%", l: "Deserción escolar" },
         { n: "1",    l: "Sistema integrado" },
       ],
-      cta: "Ver demo para educación",
+      cta: "Próximamente",
+      ctaDisabled: true,
     },
     estetica: {
       color:    "#db2777",
@@ -118,7 +122,8 @@
         { n: "−30%", l: "Citas no asistidas" },
         { n: "360°", l: "Vista del cliente" },
       ],
-      cta: "Ver demo para estética",
+      cta: "Próximamente",
+      ctaDisabled: true,
     },
     restaurantes: {
       color:    "#d97706",
@@ -141,7 +146,8 @@
         { n: "100%", l: "Visibilidad operativa" },
         { n: "1",    l: "Panel para todo" },
       ],
-      cta: "Ver demo para restaurantes",
+      cta: "Próximamente",
+      ctaDisabled: true,
     },
   };
 
@@ -173,6 +179,23 @@
         <span class="sec-stat-l">${escHtml(s.l)}</span>
       </div>`).join("");
 
+    const ctaHTML = d.ctaDisabled
+      ? `<button class="sec-panel-cta sec-panel-cta--disabled" disabled>
+          ${escHtml(d.cta)}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/>
+          </svg>
+        </button>`
+      : `<a href="${d.ctaHref}" target="_blank" rel="noopener noreferrer"
+            class="sec-panel-cta" style="background:${d.colorDk}">
+          ${escHtml(d.cta)}
+          <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
+            stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+            <path d="M5 12h14M12 5l7 7-7 7"/>
+          </svg>
+        </a>`;
+
     panelInner.innerHTML = `
       <span class="sec-panel-eyebrow"
         style="background:${d.eyeBg};color:${d.eyeColor}">
@@ -184,13 +207,7 @@
       </h3>
       <p class="sec-panel-desc">${escHtml(d.desc)}</p>
       <ul class="sec-features">${featuresHTML}</ul>
-      <a href="#demo" class="sec-panel-cta" style="background:${d.colorDk}">
-        ${escHtml(d.cta)}
-        <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor"
-          stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-          <path d="M5 12h14M12 5l7 7-7 7"/>
-        </svg>
-      </a>
+      ${ctaHTML}
       <div class="sec-stats">${statsHTML}</div>
     `;
 
