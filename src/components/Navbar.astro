@@ -5,35 +5,67 @@ import IkariLogo from '../assets/ikarilogo.png'
 
 <nav class="navbar">
 
-  <!-- Logo -->
   <a href="/" class="nav-logo">
-   <img src={IkariLogo.src} alt="Ikari CRM — logo"/>
+    <img src={IkariLogo.src} alt="Ikari CRM — logo"/>
   </a>
 
-  <!-- Nav -->
   <ul class="nav-links" role="list">
     <li><a href="#ikari"    class="nav-pill">Ikari</a></li>
-    <li><a href="#servicios"    class="nav-pill">Servicios</a></li>
-    <li><a href="#sectores" class="nav-pill">Ideal Para</a></li>
-        <li><a href="#precios" class="nav-pill">Precios</a></li>
-            <li><a href="#contacto" class="nav-pill">Contacto</a></li>
+    <li><a href="#servicios" class="nav-pill">Servicios</a></li>
+    <li><a href="#sectores"  class="nav-pill">Ideal Para</a></li>
+    <li><a href="#precios"   class="nav-pill">Precios</a></li>
+    <li><a href="#contacto"  class="nav-pill">Contacto</a></li>
   </ul>
 
-  <!-- Reloj -->
-<div class="nav-clock" id="navbar-clock" aria-live="off">
-  <span class="clock-zone"><em>TIJ</em> 00:00:00</span>
-  <span class="clock-sep">·</span>
-  <span class="clock-zone"><em>CDMX</em> 00:00:00</span>
-  <span class="clock-sep">·</span>
-  <span class="clock-zone"><em>LON</em> 00:00:00</span>
-  <span class="clock-sep">·</span>
-  <span class="clock-zone"><em>TYO</em> 00:00:00</span>
-</div>
+  <div class="nav-clock" id="navbar-clock" aria-live="off">
+    <span class="clock-zone"><em>TIJ</em> 00:00:00</span>
+    <span class="clock-sep">·</span>
+    <span class="clock-zone"><em>CDMX</em> 00:00:00</span>
+    <span class="clock-sep">·</span>
+    <span class="clock-zone"><em>LON</em> 00:00:00</span>
+    <span class="clock-sep">·</span>
+    <span class="clock-zone"><em>TYO</em> 00:00:00</span>
+  </div>
+
+  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+    <span></span>
+    <span></span>
+    <span></span>
+  </button>
 
 </nav>
 
-
+<!-- Menú móvil fuera del nav para posicionamiento correcto -->
+<div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-label="Menú de navegación">
+  <a href="#ikari"     class="nav-pill" onclick="closeMenu()">Ikari</a>
+  <a href="#servicios" class="nav-pill" onclick="closeMenu()">Servicios</a>
+  <a href="#sectores"  class="nav-pill" onclick="closeMenu()">Ideal Para</a>
+  <a href="#precios"   class="nav-pill" onclick="closeMenu()">Precios</a>
+  <a href="#contacto"  class="nav-pill" onclick="closeMenu()">Contacto</a>
+</div>
 
 <script>
-   import '../scripts/navbar'
+  import '../scripts/navbar'
+</script>
+
+<script is:inline>
+  const btn  = document.getElementById('nav-hamburger');
+  const menu = document.getElementById('nav-mobile-menu');
+
+  function closeMenu() {
+    btn.classList.remove('open');
+    menu.classList.remove('open');
+    btn.setAttribute('aria-expanded', 'false');
+  }
+
+  btn.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    btn.classList.toggle('open', isOpen);
+    btn.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  // Cierra al hacer click fuera
+  document.addEventListener('click', (e) => {
+    if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
+  });
 </script>
