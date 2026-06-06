@@ -26,8 +26,8 @@
         { n: "+2h",  l: "Productividad/día" },
         { n: "100%", l: "Trazabilidad" },
       ],
-      cta: "Ver demo para clínicas",
-      ctaHref: "https://wa.me/526632477816?text=Hola%2C%20me%20interesa%20conocer%20m%C3%A1s%20sobre%20Ikari%20para%20cl%C3%ADnicas%20y%20centros%20de%20salud.%20%C2%BFPodr%C3%ADan%20darme%20informaci%C3%B3n%20sobre%20el%20sistema%3F",
+      cta: "Solicitar demo para clínicas",
+      ctaHref: "mailto:info@ikaricrm.com",
     },
     agencias: {
       color:    "#2b61ae",
