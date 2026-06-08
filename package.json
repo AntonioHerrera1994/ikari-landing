@@ -12,7 +12,8 @@
     "astro": "astro"
   },
   "dependencies": {
+    "@astrojs/netlify": "^7.0.12",
     "@astrojs/sitemap": "^3.7.3",
-    "astro": "^6.3.6"
+    "astro": "^6.4.4"
   }
 }

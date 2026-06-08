@@ -1,17 +1,18 @@
 // @ts-check
 import { defineConfig } from 'astro/config';
-
+import netlify from '@astrojs/netlify';
 import sitemap from '@astrojs/sitemap';
 
-// https://astro.build/config
 export default defineConfig({
-   i18n: {
+  output: 'server',
+  adapter: netlify(),
+  site: 'https://ikaricrm.com/',
+  integrations: [sitemap()],
+  i18n: {
     defaultLocale: 'es',
     locales: ['es', 'en'],
     routing: {
-      prefixDefaultLocale: false  
+      prefixDefaultLocale: false
     }
-  },
-   site: 'https://ikaricrm.com/',
-  integrations: [sitemap()]
+  }
 });
