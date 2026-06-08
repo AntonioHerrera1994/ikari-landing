@@ -1,6 +1,10 @@
 ---
-// ArquitecturaSistema.astro
 import '../styles/arquitectura.css';
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
+const { lang = 'es' } = Astro.props
+const t = (lang === 'en' ? en : es).arquitectura
 ---
 
 <section class="arq-root" id="servicios">
@@ -12,170 +16,118 @@ import '../styles/arquitectura.css';
       <rect x="2" y="3" width="20" height="14" rx="2"/>
       <path d="M8 21h8"/><path d="M12 17v4"/>
     </svg>
-    Servicios
+    {t.eyebrow}
   </span>
 
-  <h2 class="arq-heading">Arquitectura del Sistema: Dos Servicios Independientes</h2>
+  <h2 class="arq-heading">{t.heading}</h2>
+  <p class="arq-lead">{t.lead}</p>
 
-  <p class="arq-lead">
-    Para garantizar claridad técnica y comercial, Ikari se divide internamente en dos grandes
-    pilares o servicios autónomos, conectados de forma nativa dentro de la misma plataforma:
-  </p>
-
-  <!-- ── Cards ── -->
   <div class="arq-grid">
 
     <!-- Servicio A -->
     <div class="arq-card light">
-      <span class="arq-card-pill blue">Adquisición Comercial</span>
-
-      <p class="arq-card-label">Marketing y Adquisición</p>
-      <h3 class="arq-card-title">SERVICIO A: IKARI CRM</h3>
-
-      <blockquote class="arq-quote">
-        "Atraer, nutrir y cerrar nuevas oportunidades de negocio."
-      </blockquote>
-
-      <p class="arq-pillars-label">Pilares Técnicos Incorporados</p>
+      <span class="arq-card-pill blue">{t.cardA.pill}</span>
+      <p class="arq-card-label">{t.cardA.label}</p>
+      <h3 class="arq-card-title">{t.cardA.title}</h3>
+      <blockquote class="arq-quote">{t.cardA.quote}</blockquote>
+      <p class="arq-pillars-label">{t.cardA.pilaresLabel}</p>
       <ul class="arq-pillars">
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <circle cx="12" cy="12" r="3"/><circle cx="12" cy="12" r="8"/>
-              <line x1="12" y1="2" x2="12" y2="4"/>
-              <line x1="12" y1="20" x2="12" y2="22"/>
-              <line x1="2" y1="12" x2="4" y2="12"/>
-              <line x1="20" y1="12" x2="22" y2="12"/>
+              <line x1="12" y1="2" x2="12" y2="4"/><line x1="12" y1="20" x2="12" y2="22"/>
+              <line x1="2" y1="12" x2="4" y2="12"/><line x1="20" y1="12" x2="22" y2="12"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Captación de Leads</strong>: Formularios integrados y Landing Pages centrales.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardA.pilares[0].titulo}</strong>: {t.cardA.pilares[0].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M12 2l3.09 6.26L22 9.27l-5 4.87l1.18 6.88L12 17.77l-6.18 3.25L7 14.14L2 9.27l6.91-1.01L12 2z"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Manejo de Embudos</strong>: Trazabilidad visual de prospectos mapeados por etapas.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardA.pilares[1].titulo}</strong>: {t.cardA.pilares[1].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="5" width="18" height="14" rx="2"/>
               <polyline points="3 7 12 13 21 7"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Email Marketing</strong>: Automatización de secuencias de nutrición, boletines y seguimientos.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardA.pilares[2].titulo}</strong>: {t.cardA.pilares[2].desc}</p>
         </li>
       </ul>
-
       <div class="arq-card-footer">
-        <span>Módulo: Compras &amp; Leads</span>
-        <span>01 // Ventas Comercial</span>
+        <span>{t.cardA.footerA}</span>
+        <span>{t.cardA.footerB}</span>
       </div>
     </div>
 
     <!-- Servicio B -->
     <div class="arq-card dark">
-      <span class="arq-card-pill green">Rigor Operativo</span>
-
-      <p class="arq-card-label">Operaciones y Administración</p>
-      <h3 class="arq-card-title">SERVICIO B: GESTIÓN INTERNA</h3>
-
-      <blockquote class="arq-quote">
-        "Estructura interna escalable, control y rigor del día a día."
-      </blockquote>
-
-      <p class="arq-pillars-label">Pilares Técnicos Incorporados</p>
+      <span class="arq-card-pill green">{t.cardB.pill}</span>
+      <p class="arq-card-label">{t.cardB.label}</p>
+      <h3 class="arq-card-title">{t.cardB.title}</h3>
+      <blockquote class="arq-quote">{t.cardB.quote}</blockquote>
+      <p class="arq-pillars-label">{t.cardB.pilaresLabel}</p>
       <ul class="arq-pillars">
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <rect x="3" y="4" width="18" height="18" rx="2"/>
               <line x1="16" y1="2" x2="16" y2="6"/><line x1="8" y1="2" x2="8" y2="6"/>
               <line x1="3" y1="10" x2="21" y2="10"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Agenda Interna</strong>: Calendario avanzado cruzando especialistas.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardB.pilares[0].titulo}</strong>: {t.cardB.pilares[0].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/>
               <polyline points="14 2 14 8 20 8"/>
-              <line x1="9" y1="15" x2="15" y2="15"/>
-              <line x1="9" y1="11" x2="15" y2="11"/>
+              <line x1="9" y1="15" x2="15" y2="15"/><line x1="9" y1="11" x2="15" y2="11"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>CRUD de Pacientes/Clientes</strong>: Control de expedientes e historiales de visitas.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardB.pilares[1].titulo}</strong>: {t.cardB.pilares[1].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <path d="M17 21v-2a4 4 0 0 0-4-4H5a4 4 0 0 0-4 4v2"/>
               <circle cx="9" cy="7" r="4"/>
               <path d="M23 21v-2a4 4 0 0 0-3-3.87"/>
               <path d="M16 3.13a4 4 0 0 1 0 7.75"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Multi-Sede &amp; Multi-Doctor</strong>: Registro técnico para múltiples sucursales.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardB.pilares[2].titulo}</strong>: {t.cardB.pilares[2].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <line x1="12" y1="1" x2="12" y2="23"/>
               <path d="M17 5H9.5a3.5 3.5 0 0 0 0 7h5a3.5 3.5 0 0 1 0 7H6"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Finanzas</strong>: Caja de cobro en tiempo real e historial detallado de transacciones.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardB.pilares[3].titulo}</strong>: {t.cardB.pilares[3].desc}</p>
         </li>
         <li class="arq-pillar">
           <div class="arq-pillar-icon" aria-hidden="true">
-            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24"
-              fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round"
-              stroke-linejoin="round">
+            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
               <line x1="18" y1="20" x2="18" y2="10"/>
               <line x1="12" y1="20" x2="12" y2="4"/>
               <line x1="6" y1="20" x2="6" y2="14"/>
             </svg>
           </div>
-          <p class="arq-pillar-text">
-            <strong>Reportes</strong>: Métricas analíticas claras del rendimiento mensual.
-          </p>
+          <p class="arq-pillar-text"><strong>{t.cardB.pilares[4].titulo}</strong>: {t.cardB.pilares[4].desc}</p>
         </li>
       </ul>
-
       <div class="arq-card-footer">
-        <span>Módulo: Columna Operativa</span>
-        <span>02 // Operación Clínica</span>
+        <span>{t.cardB.footerA}</span>
+        <span>{t.cardB.footerB}</span>
       </div>
     </div>
 
@@ -184,5 +136,5 @@ import '../styles/arquitectura.css';
 </section>
 
 <script>
-    import '../scripts/arquitectura'
+  import '../scripts/arquitectura'
 </script>

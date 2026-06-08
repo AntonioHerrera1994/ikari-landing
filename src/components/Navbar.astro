@@ -1,6 +1,11 @@
 ---
 import '../styles/navbar.css'
 import IkariLogo from '../assets/ikarilogo.png'
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
+const { lang = 'es' } = Astro.props
+const t = lang === 'en' ? en.navbar : es.navbar
 ---
 
 <nav class="navbar">
@@ -10,12 +15,17 @@ import IkariLogo from '../assets/ikarilogo.png'
   </a>
 
   <ul class="nav-links" role="list">
-    <li><a href="#ikari"    class="nav-pill">Ikari</a></li>
-    <li><a href="#servicios" class="nav-pill">Servicios</a></li>
-    <li><a href="#sectores"  class="nav-pill">Ideal Para</a></li>
-    <li><a href="#precios"   class="nav-pill">Precios</a></li>
-    <li><a href="#contacto"  class="nav-pill">Contacto</a></li>
-  </ul>
+    <li><a href="#ikari"     class="nav-pill">{t.ikari}</a></li>
+    <li><a href="#servicios" class="nav-pill">{t.servicios}</a></li>
+    <li><a href="#sectores"  class="nav-pill">{t.sectores}</a></li>
+    <li><a href="#precios"   class="nav-pill">{t.precios}</a></li>
+    <li><a href="#contacto"  class="nav-pill">{t.contacto}</a></li>
+<li>
+  <a href={t.langHref} class="nav-pill nav-lang">
+    <Fragment set:html={t.langFlag} />
+    {t.lang}
+  </a>
+</li>  </ul>
 
   <div class="nav-clock" id="navbar-clock" aria-live="off">
     <span class="clock-zone"><em>TIJ</em> 00:00:00</span>
@@ -27,7 +37,7 @@ import IkariLogo from '../assets/ikarilogo.png'
     <span class="clock-zone"><em>TYO</em> 00:00:00</span>
   </div>
 
-  <button class="nav-hamburger" id="nav-hamburger" aria-label="Abrir menú" aria-expanded="false">
+  <button class="nav-hamburger" id="nav-hamburger" aria-label={t.menuLabel} aria-expanded="false">
     <span></span>
     <span></span>
     <span></span>
@@ -35,13 +45,13 @@ import IkariLogo from '../assets/ikarilogo.png'
 
 </nav>
 
-<!-- Menú móvil fuera del nav para posicionamiento correcto -->
-<div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-label="Menú de navegación">
-  <a href="#ikari"     class="nav-pill" onclick="closeMenu()">Ikari</a>
-  <a href="#servicios" class="nav-pill" onclick="closeMenu()">Servicios</a>
-  <a href="#sectores"  class="nav-pill" onclick="closeMenu()">Ideal Para</a>
-  <a href="#precios"   class="nav-pill" onclick="closeMenu()">Precios</a>
-  <a href="#contacto"  class="nav-pill" onclick="closeMenu()">Contacto</a>
+<div class="nav-mobile-menu" id="nav-mobile-menu" role="dialog" aria-label={t.dialogLabel}>
+  <a href="#ikari"     class="nav-pill" onclick="closeMenu()">{t.ikari}</a>
+  <a href="#servicios" class="nav-pill" onclick="closeMenu()">{t.servicios}</a>
+  <a href="#sectores"  class="nav-pill" onclick="closeMenu()">{t.sectores}</a>
+  <a href="#precios"   class="nav-pill" onclick="closeMenu()">{t.precios}</a>
+  <a href="#contacto"  class="nav-pill" onclick="closeMenu()">{t.contacto}</a>
+  <a href={t.langHref} class="nav-pill nav-lang">{t.lang}</a>
 </div>
 
 <script>
@@ -64,7 +74,6 @@ import IkariLogo from '../assets/ikarilogo.png'
     btn.setAttribute('aria-expanded', String(isOpen));
   });
 
-  // Cierra al hacer click fuera
   document.addEventListener('click', (e) => {
     if (!btn.contains(e.target) && !menu.contains(e.target)) closeMenu();
   });

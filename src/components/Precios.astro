@@ -1,39 +1,41 @@
 ---
 import '../styles/precios.css'
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
+const { lang = 'es' } = Astro.props
+const t = (lang === 'en' ? en : es).precios
+
+const planes = ['ancla', 'comando', 'corporativo']
 ---
 
-
-<section class="precios-section" id="precios">
+<section class="precios-section" id="precios" data-lang={lang}>
 
   <div class="precios-header">
- <span class="arq-eyebrow">
-    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
-      fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
-      stroke-linejoin="round" aria-hidden="true">
-      <rect x="2" y="3" width="20" height="14" rx="2"/>
-      <path d="M8 21h8"/><path d="M12 17v4"/>
-    </svg>
-  Planes y Precios
-  </span>
-    <h2 class="precios-title">El ancla que tu negocio necesita,<br/>al precio que merece.</h2>
-    <p class="precios-subtitle">
-      Sin permanencia. Sin costes ocultos. Cancela cuando quieras.
-    </p>
+    <span class="arq-eyebrow">
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24"
+        fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round"
+        stroke-linejoin="round" aria-hidden="true">
+        <rect x="2" y="3" width="20" height="14" rx="2"/>
+        <path d="M8 21h8"/><path d="M12 17v4"/>
+      </svg>
+      {t.eyebrow}
+    </span>
+    <h2 class="precios-title" set:html={t.titulo} />
+    <p class="precios-subtitle">{t.subtitulo}</p>
 
-    <!-- Toggle mensual / anual -->
     <div class="billing-toggle">
-      <span class="billing-label" id="label-mensual">Mensual</span>
-      <button class="toggle-track" id="billing-toggle" role="switch" aria-checked="false" aria-label="Cambiar a facturación anual">
+      <span class="billing-label active" id="label-mensual">{t.toggleMensual}</span>
+      <button class="toggle-track" id="billing-toggle" role="switch" aria-checked="false" aria-label={t.ariaToggle}>
         <span class="toggle-thumb"></span>
       </button>
       <span class="billing-label" id="label-anual">
-        Anual
-        <span class="badge-ahorro">2 meses gratis</span>
+        {t.toggleAnual}
+        <span class="badge-ahorro">{t.badgeAhorro}</span>
       </span>
     </div>
   </div>
 
-  <!-- Cards de planes -->
   <div class="planes-grid">
 
     <!-- PLAN ANCLA -->
@@ -45,53 +47,38 @@ import '../styles/precios.css'
           </svg>
         </div>
         <div>
-          <p class="plan-name">Ancla</p>
-          <p class="plan-tagline">Para comenzar con fuerza</p>
+          <p class="plan-name">{t.planes.ancla.nombre}</p>
+          <p class="plan-tagline">{t.planes.ancla.tagline}</p>
         </div>
       </div>
-
       <div class="plan-price-wrap">
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">1,699</span>
-          <span class="price-period">/mes</span>
+          <span class="price-period">{t.periodoMes}</span>
         </div>
-        <p class="price-note" id="note-ancla">Facturado mensualmente</p>
+        <p class="price-note" id="note-ancla">{t.notaMensual}</p>
       </div>
-
-<a href="mailto:info@ikaricrm.com" target="_blank" rel="noopener noreferrer" class="plan-cta plan-cta--outline">Empezar gratis 14 días</a>
-
-
+      <a href="mailto:info@ikaricrm.com" target="_blank" rel="noopener noreferrer" class="plan-cta plan-cta--outline">{t.planes.ancla.cta}</a>
       <div class="plan-features">
-        <p class="features-label">Incluye:</p>
+        <p class="features-label">{t.planes.ancla.featuresLabel}</p>
         <ul class="features-list">
-          <li class="feat feat--on"><span class="feat-icon">✓</span> 1 sede operativa</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Hasta 3 usuarios / doctores</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> 500 leads / mes</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> CRM con pipeline visual Kanban</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Agenda y gestión de citas</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> CRUD completo de pacientes / clientes</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Historial de interacciones por lead</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Notificaciones internas del equipo</li>
-
-          <li class="feat feat--off"><span class="feat-icon">—</span> Email marketing</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> Finanzas y caja</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> Reportes avanzados</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> Multi-sede</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> WhatsApp Business API</li>
+          {t.planes.ancla.features.map(f => (
+            <li class={`feat feat--${f.on ? 'on' : 'off'}`}>
+              <span class="feat-icon">{f.on ? '✓' : '—'}</span> {f.text}
+            </li>
+          ))}
         </ul>
       </div>
-
       <p class="plan-support">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-        Soporte por email · Respuesta en 24 h
+        {t.planes.ancla.soporte}
       </p>
     </div>
 
-    <!-- PLAN COMANDO (destacado) -->
+    <!-- PLAN COMANDO -->
     <div class="plan-card plan-card--featured" id="plan-comando">
-      <div class="plan-badge">Más popular</div>
-
+      <div class="plan-badge">{t.masPopular}</div>
       <div class="plan-head">
         <div class="plan-icon plan-icon--featured">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round">
@@ -99,46 +86,32 @@ import '../styles/precios.css'
           </svg>
         </div>
         <div>
-          <p class="plan-name">Comando</p>
-          <p class="plan-tagline">Para clínicas y agencias en crecimiento</p>
+          <p class="plan-name">{t.planes.comando.nombre}</p>
+          <p class="plan-tagline">{t.planes.comando.tagline}</p>
         </div>
       </div>
-
       <div class="plan-price-wrap">
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">2,199</span>
-          <span class="price-period">/mes</span>
+          <span class="price-period">{t.periodoMes}</span>
         </div>
-        <p class="price-note" id="note-comando">Facturado mensualmente</p>
+        <p class="price-note" id="note-comando">{t.notaMensual}</p>
       </div>
-
-<a href="mailto:info@ikaricrm.com" target="_blank" rel="noopener noreferrer" class="plan-cta plan-cta--primary">Solicitar demo</a>
-
-
+      <a href="mailto:info@ikaricrm.com" target="_blank" rel="noopener noreferrer" class="plan-cta plan-cta--primary">{t.planes.comando.cta}</a>
       <div class="plan-features">
-        <p class="features-label">Todo lo de Ancla, más:</p>
+        <p class="features-label">{t.planes.comando.featuresLabel}</p>
         <ul class="features-list">
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Hasta 3 sedes</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Hasta 10 usuarios / doctores</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> 2,000 leads / mes</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Email marketing automatizado</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Finanzas y caja en tiempo real</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Reportes y métricas avanzadas</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Multi-nicho configurable</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Automatización de tareas internas</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Control de inventario básico</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Roles y permisos por usuario</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> Sedes ilimitadas</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> WhatsApp Business API</li>
-          <li class="feat feat--off"><span class="feat-icon">—</span> Onboarding dedicado</li>
-  
+          {t.planes.comando.features.map(f => (
+            <li class={`feat feat--${f.on ? 'on' : 'off'}`}>
+              <span class="feat-icon">{f.on ? '✓' : '—'}</span> {f.text}
+            </li>
+          ))}
         </ul>
       </div>
-
       <p class="plan-support plan-support--featured">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
-        Soporte por chat · Respuesta en 4 h
+        {t.planes.comando.soporte}
       </p>
     </div>
 
@@ -152,59 +125,45 @@ import '../styles/precios.css'
           </svg>
         </div>
         <div>
-          <p class="plan-name">Corporativo</p>
-          <p class="plan-tagline">Para redes multi-sede y equipos grandes</p>
+          <p class="plan-name">{t.planes.corporativo.nombre}</p>
+          <p class="plan-tagline">{t.planes.corporativo.tagline}</p>
         </div>
       </div>
-
       <div class="plan-price-wrap">
         <div class="plan-price">
           <span class="price-currency">$</span>
           <span class="price-amount">2,699</span>
-          <span class="price-period">/mes</span>
+          <span class="price-period">{t.periodoMes}</span>
         </div>
-        <p class="price-note" id="note-corporativo">Facturado mensualmente</p>
+        <p class="price-note" id="note-corporativo">{t.notaMensual}</p>
       </div>
-
-      <a href="mailto:info@ikaricrm.com" class="plan-cta plan-cta--outline">Hablar con ventas</a>
-
+      <a href="mailto:info@ikaricrm.com" class="plan-cta plan-cta--outline">{t.planes.corporativo.cta}</a>
       <div class="plan-features">
-        <p class="features-label">Todo lo de Comando, más:</p>
+        <p class="features-label">{t.planes.corporativo.featuresLabel}</p>
         <ul class="features-list">
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Sedes ilimitadas</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Usuarios ilimitados</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Leads ilimitados</li>
-          <li class="feat feat--on feat--highlight">
-            <span class="feat-icon">✓</span>
-            <span>WhatsApp Business API oficial (Meta) <span class="feat-new">NUEVO</span></span>
-          </li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Recordatorios automáticos por WhatsApp</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Seguimiento instantáneo de leads vía WA</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> API pública para integraciones externas</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Onboarding y setup dedicado (4 h)</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Capacitación en vivo para tu equipo</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Gestor de cuenta asignado</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Uptime garantizado 99.9%</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Backups diarios automáticos</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Personalización de marca (white-label)</li>
-          <li class="feat feat--on"><span class="feat-icon">✓</span> Acceso anticipado a nuevas funciones</li>
+          {t.planes.corporativo.features.map(f => (
+            <li class={`feat feat--${f.on ? 'on' : 'off'}${f.highlight ? ' feat--highlight' : ''}`}>
+              <span class="feat-icon">{f.on ? '✓' : '—'}</span>
+              {f.badge
+                ? <span>{f.text} <span class="feat-new">{f.badge}</span></span>
+                : f.text
+              }
+            </li>
+          ))}
         </ul>
       </div>
-
       <p class="plan-support">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07A19.5 19.5 0 0 1 4.69 12a19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 3.6 1.18h3a2 2 0 0 1 2 1.72 12.84 12.84 0 0 0 .7 2.81 2 2 0 0 1-.45 2.11L8.09 8a16 16 0 0 0 6 6l.27-.27a2 2 0 0 1 2.11-.45 12.84 12.84 0 0 0 2.81.7A2 2 0 0 1 21 16z"/></svg>
-        Soporte prioritario 24/7 · Respuesta en 1 h
+        {t.planes.corporativo.soporte}
       </p>
     </div>
 
   </div>
-
-
 
 </section>
 
 <link rel="stylesheet" href="/styles/PreciosIkari.css" />
 <script src="/scripts/PreciosIkari.js" defer></script>
 <script>
-    import '../scripts/precios.js'
+  import '../scripts/precios.js'
 </script>

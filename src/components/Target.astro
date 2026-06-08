@@ -1,8 +1,13 @@
 ---
 import '../styles/target.css'
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
+const { lang = 'es' } = Astro.props
+const t = (lang === 'en' ? en : es).target
 ---
 
-<section class="sec-section" id="sectores">
+<section class="sec-section" id="sectores" data-lang={lang}>
 
   <div class="sec-header">
     <span class="arq-eyebrow">
@@ -12,19 +17,16 @@ import '../styles/target.css'
         <rect x="2" y="3" width="20" height="14" rx="2"/>
         <path d="M8 21h8"/><path d="M12 17v4"/>
       </svg>
-      Soluciones para cada Sector
+      {t.eyebrow}
     </span>
-    <h2 class="sec-title">Un sistema adaptado<br/>a <em>tu industria.</em></h2>
-    <p class="sec-lead">Selecciona tu sector y descubre cómo Ikari se reconfigura para ti.</p>
+    <h2 class="sec-title" set:html={t.titulo} />
+    <p class="sec-lead">{t.lead}</p>
   </div>
- 
-  <!-- Grid principal -->
+
   <div class="sec-layout">
- 
-    <!-- ── Izquierda -->
-    <div class="sec-grid" role="tablist" aria-label="Selecciona tu sector">
- 
-      <!-- Clínicas -->
+
+    <div class="sec-grid" role="tablist" aria-label={t.ariaTablist}>
+
       <button class="sec-card active" data-sector="salud" role="tab" aria-selected="true">
         <div class="sec-card-icon salud">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -32,12 +34,11 @@ import '../styles/target.css'
             <path d="M9 12h4"/><path d="M11 10v4"/>
           </svg>
         </div>
-        <p class="sec-card-title">Clínicas y Salud</p>
-        <p class="sec-card-sub">Gestión médica inteligente</p>
+        <p class="sec-card-title">{t.sectores.salud.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.salud.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
-      <!-- Agencias -->
+
       <button class="sec-card" data-sector="agencias" role="tab" aria-selected="false">
         <div class="sec-card-icon agencias">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -47,12 +48,11 @@ import '../styles/target.css'
             <path d="M3 13a20 20 0 0 0 18 0"/>
           </svg>
         </div>
-        <p class="sec-card-title">Agencias</p>
-        <p class="sec-card-sub">Pipeline B2B acelerado (próximamente)</p>
+        <p class="sec-card-title">{t.sectores.agencias.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.agencias.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
-      <!-- Bienes Raíces -->
+
       <button class="sec-card" data-sector="real" role="tab" aria-selected="false">
         <div class="sec-card-icon real">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -62,12 +62,11 @@ import '../styles/target.css'
             <path d="M14 8l1 0"/><path d="M14 12l1 0"/><path d="M14 16l1 0"/>
           </svg>
         </div>
-        <p class="sec-card-title">Bienes Raíces</p>
-        <p class="sec-card-sub">Catálogo + CRM integrado (próximamente)</p>
+        <p class="sec-card-title">{t.sectores.real.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.real.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
-      <!-- Educación -->
+
       <button class="sec-card" data-sector="educacion" role="tab" aria-selected="false">
         <div class="sec-card-icon educacion">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -75,24 +74,22 @@ import '../styles/target.css'
             <path d="M6 12v5c0 2 2 3 6 3s6-1 6-3v-5"/>
           </svg>
         </div>
-        <p class="sec-card-title">Educación</p>
-        <p class="sec-card-sub">Academias y colegios (próximamente)</p>
+        <p class="sec-card-title">{t.sectores.educacion.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.educacion.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
-      <!-- Estética -->
+
       <button class="sec-card" data-sector="estetica" role="tab" aria-selected="false">
         <div class="sec-card-icon estetica">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
             <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"/>
           </svg>
         </div>
-        <p class="sec-card-title">Estética & Wellness</p>
-        <p class="sec-card-sub">Salones, spas y bienestar (próximamente)</p>
+        <p class="sec-card-title">{t.sectores.estetica.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.estetica.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
-      <!-- Restaurantes -->
+
       <button class="sec-card" data-sector="restaurantes" role="tab" aria-selected="false">
         <div class="sec-card-icon restaurantes">
           <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.75" stroke-linecap="round" stroke-linejoin="round">
@@ -103,18 +100,17 @@ import '../styles/target.css'
             <line x1="14" y1="1" x2="14" y2="4"/>
           </svg>
         </div>
-        <p class="sec-card-title">Restaurantes</p>
-        <p class="sec-card-sub">Cadenas y franquicias (próximamente)</p>
+        <p class="sec-card-title">{t.sectores.restaurantes.titulo}</p>
+        <p class="sec-card-sub">{t.sectores.restaurantes.sub}</p>
         <span class="sec-card-indicator" aria-hidden="true"></span>
       </button>
- 
+
     </div>
- 
-    <!-- ── Derecha -->
+
     <div class="sec-panel" id="secPanel" aria-live="polite">
       <div class="sec-panel-inner" id="secPanelInner"></div>
     </div>
- 
+
   </div>
 </section>
 

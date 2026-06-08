@@ -1,45 +1,16 @@
 ---
 import '../styles/footer.css'
 import FooterLogo from '../assets/logoblanco.png'
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
 interface Props {
+  lang?: string;
   currentYear?: number;
 }
 
-const { currentYear = new Date().getFullYear() } = Astro.props;
-
-const navColumns = [
-  {
-    heading: "Producto",
-    links: [
-      { label: "¿Qué es Ikari?",            href: "#ikari"           },
-      { label: "Servicios",       href: "#servicios"       },
-      { label: "Ideal Para",       href: "#sectores"     },
-      { label: "Planes y Precios",    href: "#precios"     },
-      { label: "Contacto", href: "#contacto"      },
-
-    ],
-  },
-  {
-    heading: "Sectores",
-    links: [
-      { label: "Clínicas y Salud",        href: "#sectores"        },
-      { label: "Agencias y Consultoras",  href: "#sectores"     },
-      { label: "Bienes Raíces",           href: "#sectores"  },
-      { label: "Multi-Sede",              href: "#sectores"    },
-   
-    ],
-  },
-
-  {
-    heading: "Legal",
-    links: [
-      { label: "Términos de Uso",         href: "#terminos"   },
-      { label: "Política de Privacidad",  href: "#privacidad" },
-      { label: "Política de Cookies",     href: "#cookies"    },
-  
-    ],
-  },
-];
+const { lang = 'es', currentYear = new Date().getFullYear() } = Astro.props
+const t = (lang === 'en' ? en : es).footer
 
 const socialLinks = [
   {
@@ -74,34 +45,27 @@ const socialLinks = [
       <polygon points="9.75 15.02 15.5 12 9.75 8.98 9.75 15.02" fill="white"/>
     </svg>`,
   },
-];
+]
 ---
 
 <footer class="ikari-footer">
 
-
-
-  <!-- ── Cuerpo del footer ── -->
   <div class="footer-body">
 
-    <!-- Marca + descripción + redes -->
     <div class="footer-brand-col">
-      <a href="#" class="footer-logo" aria-label="Ikari — inicio">
-      <img src={FooterLogo.src}/>
+      <a href="#" class="footer-logo" aria-label={t.ariaLogo}>
+        <img src={FooterLogo.src} />
       </a>
       <p class="footer-tagline">
-        CRM &amp; Gestión Interna para clínicas, agencias y empresas que necesitan un
-        <strong>punto de apoyo firme</strong> para escalar sin perder el control.
+        CRM &amp; {lang === 'en' ? 'Internal Management' : 'Gestión Interna'} for {lang === 'en' ? 'clinics, agencies and businesses that need a' : 'clínicas, agencias y empresas que necesitan un'}
+        {' '}<strong>{t.taglineStrong}</strong>{' '}
+        {lang === 'en' ? 'to scale without losing control.' : 'para escalar sin perder el control.'}
       </p>
 
-      <!-- Badges de nichos -->
       <div class="footer-badges">
-        <span class="footer-badge">⚕ Salud</span>
-        <span class="footer-badge">📋 Agencias</span>
-        <span class="footer-badge">🏢 Real Estate</span>
+        {t.badges.map(b => <span class="footer-badge">{b}</span>)}
       </div>
 
-      <!-- Redes sociales -->
       <div class="footer-socials">
         {socialLinks.map((s) => (
           <a href={s.href} class="social-btn" aria-label={s.label} set:html={s.icon} />
@@ -109,9 +73,8 @@ const socialLinks = [
       </div>
     </div>
 
-    <!-- Columnas de navegación -->
-    <nav class="footer-nav-grid" aria-label="Navegación del footer">
-      {navColumns.map((col) => (
+    <nav class="footer-nav-grid" aria-label={t.ariaFooterNav}>
+      {t.columnas.map((col) => (
         <div class="footer-nav-col">
           <p class="footer-nav-heading">{col.heading}</p>
           <ul class="footer-nav-list">
@@ -127,19 +90,16 @@ const socialLinks = [
 
   </div>
 
-  <!-- ── Barra inferior ── -->
   <div class="footer-bottom">
     <div class="footer-bottom-inner">
       <p class="footer-copy">
-        © {currentYear} <strong>Ikari CRM</strong>. Todos los derechos reservados.
- 
+        © {currentYear} <strong>Ikari CRM</strong>. {t.copy}
       </p>
- 
     </div>
   </div>
 
 </footer>
 
 <script>
-    import '../scripts/footer'
+  import '../scripts/footer'
 </script>

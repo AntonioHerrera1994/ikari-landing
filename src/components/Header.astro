@@ -1,41 +1,40 @@
 ---
 import '../styles/header.css'
+import { es } from '../i18n/es.js'
+import { en } from '../i18n/en.js'
+
+const { lang = 'es' } = Astro.props
+const t = (lang === 'en' ? en : es).header
 ---
 
 <section class="hp-hero">
 
   <div class="hp-top">
- 
+
     <span class="hp-badge">
       <svg width="12" height="12" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polygon points="13 2 3 14 12 14 11 22 21 10 12 10 13 2"/></svg>
-      CRM + Gestión + WhatsApp — todo en uno
+      {t.badge}
     </span>
- 
-    <h1 class="hp-title">
-      Tu negocio, en <em>control total.</em>
-    </h1>
- 
-    <p class="hp-subtitle">
-      Ikari gestiona tus leads, citas y finanzas desde un solo sistema.<br/>
-      Sin hojas de cálculo. Sin caos. Sin excusas.
-    </p>
- 
+
+    <h1 class="hp-title" set:html={t.titulo} />
+
+    <p class="hp-subtitle" set:html={t.subtitulo} />
+
     <div class="hp-actions">
       <a href="mailto:info@ikaricrm.com" class="hp-btn hp-btn--primary">
-        Solicitar demo gratis
+        {t.btnPrimario}
         <svg width="15" height="15" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg>
       </a>
       <a href="#precios" class="hp-btn hp-btn--ghost">
-        Ver planes y precios
+        {t.btnSecundario}
       </a>
     </div>
- 
+
   </div>
- 
+
   <!-- ── Widget: simulador de pipeline ── -->
   <div class="hp-widget">
- 
-    <!-- Barra superior del widget -->
+
     <div class="hp-widget-bar">
       <div class="hp-widget-bar-left">
         <div class="hp-widget-dots">
@@ -43,7 +42,7 @@ import '../styles/header.css'
         </div>
         <span class="hp-widget-label">
           <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="3" width="6" height="18" rx="1"/><rect x="9" y="8" width="6" height="13" rx="1"/><rect x="16" y="5" width="6" height="16" rx="1"/></svg>
-          Pipeline de Ventas — Ikari CRM
+          {t.widgetLabel}
         </span>
       </div>
       <div class="hp-widget-bar-right">
@@ -51,75 +50,72 @@ import '../styles/header.css'
         <span class="hp-online-text">Live</span>
       </div>
     </div>
- 
-    <!-- Toolbar del pipeline -->
+
     <div class="hp-pipeline-toolbar">
       <div class="hp-pipeline-meta">
-        <span class="hp-meta-label">Prospectos activos:</span>
+        <span class="hp-meta-label">{t.prospectos}</span>
         <span class="hp-meta-count" id="hpTotalCount">0</span>
       </div>
       <button class="hp-add-btn" id="hpAddBtn">
         <svg width="13" height="13" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="12" y1="5" x2="12" y2="19"/><line x1="5" y1="12" x2="19" y2="12"/></svg>
-        Nuevo lead
+        {t.nuevoLead}
       </button>
     </div>
- 
-    <!-- Kanban board -->
-    <div class="hp-kanban" id="hpKanban">
+
+<div class="hp-kanban" id="hpKanban" data-lang={lang}>
       <!-- Se genera por JS -->
     </div>
- 
-    <!-- Footer del widget -->
+
     <div class="hp-widget-footer">
       <span class="hp-footer-note">
         <svg width="11" height="11" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><line x1="12" y1="8" x2="12" y2="12"/><line x1="12" y1="16" x2="12.01" y2="16"/></svg>
-        Demo interactivo · Arrastra tarjetas entre fases · Los datos se reinician al recargar
+        {t.footerDemo}
       </span>
     </div>
- 
+
   </div>
- 
+
   <!-- ── Modal agregar lead ── -->
   <div class="hp-modal-backdrop" id="hpModalBackdrop">
     <div class="hp-modal" id="hpModal" role="dialog" aria-modal="true" aria-labelledby="hpModalTitle">
       <div class="hp-modal-header">
-        <h3 class="hp-modal-title" id="hpModalTitle">Agregar nuevo lead</h3>
-        <button class="hp-modal-close" id="hpModalClose" aria-label="Cerrar">
+        <h3 class="hp-modal-title" id="hpModalTitle">{t.modalTitulo}</h3>
+        <button class="hp-modal-close" id="hpModalClose" aria-label={t.modalCerrar}>
           <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><line x1="18" y1="6" x2="6" y2="18"/><line x1="6" y1="6" x2="18" y2="18"/></svg>
         </button>
       </div>
       <div class="hp-modal-body">
         <div class="hp-field">
-          <label class="hp-field-label" for="hpName">Nombre completo</label>
-          <input type="text" id="hpName" class="hp-field-input" placeholder="Ej. María González" maxlength="40" />
+          <label class="hp-field-label" for="hpName">{t.campoNombre}</label>
+          <input type="text" id="hpName" class="hp-field-input" placeholder={t.campoNombrePlaceholder} maxlength="40" />
         </div>
         <div class="hp-field">
-          <label class="hp-field-label" for="hpPhone">Teléfono</label>
+          <label class="hp-field-label" for="hpPhone">{t.campoTelefono}</label>
           <input type="tel" id="hpPhone" class="hp-field-input" placeholder="+52 55 1234 5678" maxlength="20" />
         </div>
         <div class="hp-field">
-          <label class="hp-field-label" for="hpSource">Fuente</label>
+          <label class="hp-field-label" for="hpSource">{t.campoFuente}</label>
           <select id="hpSource" class="hp-field-input hp-field-select">
-            <option value="Web">Sitio web</option>
-            <option value="WA">WhatsApp</option>
-            <option value="IG">Instagram</option>
-            <option value="Ref">Referido</option>
-            <option value="FB">Facebook</option>
+            <option value="Web">{t.fuentes.web}</option>
+            <option value="WA">{t.fuentes.wa}</option>
+            <option value="IG">{t.fuentes.ig}</option>
+            <option value="Ref">{t.fuentes.ref}</option>
+            <option value="FB">{t.fuentes.fb}</option>
           </select>
         </div>
       </div>
       <div class="hp-modal-footer">
-        <button class="hp-modal-cancel" id="hpModalCancel">Cancelar</button>
+        <button class="hp-modal-cancel" id="hpModalCancel">{t.modalCancelar}</button>
         <button class="hp-modal-submit" id="hpModalSubmit">
           <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"/></svg>
-          Agregar lead
+          {t.modalAgregar}
         </button>
       </div>
     </div>
   </div>
- 
+
 </section>
 
 <script>
- import '../scripts/header'
+  import '../scripts/header'
 </script>
