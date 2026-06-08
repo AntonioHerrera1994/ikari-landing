@@ -119,3 +119,41 @@
   }
 
 })();
+
+function applyMoneda(currency) {
+  const cfg = PRECIOS[currency];
+  if (!cfg) return;
+
+  window.__ikariCurrency = currency;
+  window.__ikariPrecios  = cfg;
+
+  const isAnual = document.getElementById("billing-toggle")?.classList.contains("on") || false;
+  const plan    = isAnual ? "anual" : "mensual";
+
+  ["ancla", "comando", "corporativo"].forEach((key) => {
+    const amountEl  = document.querySelector(`#plan-${key} .price-amount`);
+    const noteEl    = document.getElementById(`note-${key}`);
+    const periodEls = document.querySelectorAll(`#plan-${key} .price-period`);
+
+    if (!amountEl) return;
+
+    const precio = cfg[key][plan];
+    amountEl.textContent = fmt(precio, cfg.locale);
+
+    if (noteEl) {
+      noteEl.textContent = isAnual ? cfg.notaAnual(precio) : cfg.notaMensual;
+    }
+
+    periodEls.forEach(el => {
+      el.textContent = currency === "usd" ? "/mo" : "/mes";
+    });
+  });
+
+  const badgeEl = document.querySelector(".badge-ahorro");
+  if (badgeEl) {
+    badgeEl.textContent = currency === "usd" ? "2 months free" : "2 meses gratis";
+  }
+
+  // ── Avisar a otros scripts que la moneda está lista ──
+  window.dispatchEvent(new CustomEvent("ikari:currency", { detail: { currency, cfg } }));
+}

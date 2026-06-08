@@ -4,9 +4,9 @@
   const fmt = (n, locale) => n.toLocaleString(locale || "es-MX");
 
   const PRECIOS_DEFAULT = {
-    ancla:       { mensual: 1699,  anual: 1499  },
-    comando:     { mensual: 2199,  anual: 1999  },
-    corporativo: { mensual: 2699,  anual: 2499  },
+    ancla:       { mensual: 1699, anual: 1499 },
+    comando:     { mensual: 2199, anual: 1999 },
+    corporativo: { mensual: 2699, anual: 2499 },
   };
 
   const toggleBtn    = document.getElementById("billing-toggle");
@@ -27,11 +27,10 @@
   }
 
   function updatePrices() {
-    // Usar moneda detectada por currency.js si existe
-    const cfg      = window.__ikariPrecios;
-    const locale   = cfg?.locale   || "es-MX";
-    const precios  = cfg           || PRECIOS_DEFAULT;
-    const plan     = isAnual ? "anual" : "mensual";
+    const cfg     = window.__ikariPrecios;
+    const locale  = cfg?.locale || "es-MX";
+    const precios = cfg || PRECIOS_DEFAULT;
+    const plan    = isAnual ? "anual" : "mensual";
 
     const notaMensual = cfg?.notaMensual || "Facturado mensualmente";
     const notaAnual   = cfg?.notaAnual   || ((p) => `$${fmt(p * 12, locale)}/año — ahorras $${fmt(Math.round(p * 12 * 0.167), locale)}`);
@@ -55,10 +54,19 @@
         }
 
         periodEls.forEach(el => { el.textContent = periodo; });
-
         amountEl.classList.remove("animating");
       }, 220);
     });
+  }
+
+  /* ── Esperar a que currency.js detecte la moneda ─────── */
+  window.addEventListener("ikari:currency", () => {
+    updatePrices();
+  });
+
+  /* ── Si currency.js ya corrió antes (sessionStorage) ─── */
+  if (window.__ikariPrecios) {
+    updatePrices();
   }
 
   /* ── Animaciones de entrada ──────────────────────────── */
@@ -78,6 +86,5 @@
     cards.forEach((card) => observer.observe(card));
   }
 
-  /* ── Init ────────────────────────────────────────────── */
   if (labelMensual) labelMensual.classList.add("active");
 })();
